@@ -1,0 +1,5 @@
+E:\C#\ISET2018_CouClasses\ISET2018_CouClasses\bin\Debug\ISET2018_CouClasses.dll
+E:\C#\ISET2018_CouClasses\ISET2018_CouClasses\bin\Debug\ISET2018_CouClasses.pdb
+E:\C#\ISET2018_CouClasses\ISET2018_CouClasses\obj\Debug\ISET2018_CouClasses.csproj.CoreCompileInputs.cache
+E:\C#\ISET2018_CouClasses\ISET2018_CouClasses\obj\Debug\ISET2018_CouClasses.dll
+E:\C#\ISET2018_CouClasses\ISET2018_CouClasses\obj\Debug\ISET2018_CouClasses.pdb

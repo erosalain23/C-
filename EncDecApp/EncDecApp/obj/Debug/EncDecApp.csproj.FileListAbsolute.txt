@@ -1,0 +1,11 @@
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\bin\Debug\EncDecApp.exe.config
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\bin\Debug\EncDecApp.exe
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\bin\Debug\EncDecApp.pdb
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\bin\Debug\MaterialSkin.dll
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\obj\Debug\EncDecApp.csprojResolveAssemblyReference.cache
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\obj\Debug\EncDecApp.Form1.resources
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\obj\Debug\EncDecApp.Properties.Resources.resources
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\obj\Debug\EncDecApp.csproj.GenerateResource.Cache
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\obj\Debug\EncDecApp.csproj.CoreCompileInputs.cache
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\obj\Debug\EncDecApp.exe
+C:\Users\Alain\source\repos\EncDecApp\EncDecApp\obj\Debug\EncDecApp.pdb

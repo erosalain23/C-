@@ -1,0 +1,9 @@
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\bin\Debug\ISET2018_CouGestion.dll
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\bin\Debug\ISET2018_CouGestion.pdb
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\bin\Debug\ISET2018_CouAcces.dll
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\bin\Debug\ISET2018_CouClasses.dll
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\bin\Debug\ISET2018_CouClasses.pdb
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\obj\Debug\ISET2018_CouGestion.csprojResolveAssemblyReference.cache
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\obj\Debug\ISET2018_CouGestion.csproj.CoreCompileInputs.cache
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\obj\Debug\ISET2018_CouGestion.dll
+E:\C#\ISET2018_CouGestion\ISET2018_CouGestion\obj\Debug\ISET2018_CouGestion.pdb

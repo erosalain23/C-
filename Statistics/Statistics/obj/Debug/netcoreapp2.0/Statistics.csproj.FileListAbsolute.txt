@@ -1,0 +1,11 @@
+C:\Users\Alain\source\repos\Statistics\Statistics\bin\Debug\netcoreapp2.0\Statistics.deps.json
+C:\Users\Alain\source\repos\Statistics\Statistics\bin\Debug\netcoreapp2.0\Statistics.runtimeconfig.json
+C:\Users\Alain\source\repos\Statistics\Statistics\bin\Debug\netcoreapp2.0\Statistics.runtimeconfig.dev.json
+C:\Users\Alain\source\repos\Statistics\Statistics\bin\Debug\netcoreapp2.0\Statistics.dll
+C:\Users\Alain\source\repos\Statistics\Statistics\obj\Debug\netcoreapp2.0\Statistics.csprojResolveAssemblyReference.cache
+C:\Users\Alain\source\repos\Statistics\Statistics\obj\Debug\netcoreapp2.0\Statistics.csproj.CoreCompileInputs.cache
+C:\Users\Alain\source\repos\Statistics\Statistics\obj\Debug\netcoreapp2.0\Statistics.AssemblyInfoInputs.cache
+C:\Users\Alain\source\repos\Statistics\Statistics\obj\Debug\netcoreapp2.0\Statistics.AssemblyInfo.cs
+C:\Users\Alain\source\repos\Statistics\Statistics\bin\Debug\netcoreapp2.0\Statistics.pdb
+C:\Users\Alain\source\repos\Statistics\Statistics\obj\Debug\netcoreapp2.0\Statistics.dll
+C:\Users\Alain\source\repos\Statistics\Statistics\obj\Debug\netcoreapp2.0\Statistics.pdb

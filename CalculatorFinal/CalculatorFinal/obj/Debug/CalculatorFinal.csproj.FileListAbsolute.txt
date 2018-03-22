@@ -1,0 +1,10 @@
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\bin\Debug\CalculatorFinal.exe.config
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\bin\Debug\CalculatorFinal.exe
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\bin\Debug\CalculatorFinal.pdb
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\obj\Debug\CalculatorFinal.csprojResolveAssemblyReference.cache
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\obj\Debug\CalculatorFinal.Form1.resources
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\obj\Debug\CalculatorFinal.Properties.Resources.resources
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\obj\Debug\CalculatorFinal.csproj.GenerateResource.Cache
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\obj\Debug\CalculatorFinal.csproj.CoreCompileInputs.cache
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\obj\Debug\CalculatorFinal.exe
+c:\users\alain\source\repos\CalculatorFinal\CalculatorFinal\obj\Debug\CalculatorFinal.pdb
