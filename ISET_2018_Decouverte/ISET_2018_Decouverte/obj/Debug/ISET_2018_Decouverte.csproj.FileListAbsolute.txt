@@ -67,3 +67,4 @@ E:\C#\ISET_2018_Decouverte\ISET_2018_Decouverte\bin\Debug\ISET2018_CouClasses.dl
 E:\C#\ISET_2018_Decouverte\ISET_2018_Decouverte\bin\Debug\ISET2018_CouGestion.dll
 E:\C#\ISET_2018_Decouverte\ISET_2018_Decouverte\bin\Debug\ISET2018_CouClasses.pdb
 E:\C#\ISET_2018_Decouverte\ISET_2018_Decouverte\bin\Debug\ISET2018_CouGestion.pdb
+E:\C#\ISET_2018_Decouverte\ISET_2018_Decouverte\obj\Debug\ISET_2018_Decouverte.DinerPhilosophe.resources

@@ -100,6 +100,12 @@ namespace ISET_2018_Decouverte
             EcranBD3 f = new EcranBD3();
             f.ShowDialog();
         }
+
+        private void mfDiner_Click(object sender, EventArgs e)
+        {
+            EcranDinerPhilosophes f = new EcranDinerPhilosophes();
+            f.ShowDialog();
+        }
     }
 }
 

@@ -41,8 +41,8 @@ namespace ISET2018_CouAcces
   {
    CreerCommande("ModifierPersonne");
    int res = 0;
-   Commande.Parameters.AddWithValue("ID", SqlDbType.Int);
-   Commande.Parameters.AddWithValue("@NOM", NOM);
+            Commande.Parameters.AddWithValue("ID", ID);//replaced this SqlDbType.Int with ID
+            Commande.Parameters.AddWithValue("@NOM", NOM);
    if(PRE == null) Commande.Parameters.AddWithValue("@PRE", Convert.DBNull);
    else Commande.Parameters.AddWithValue("@PRE", PRE);
    if(NAI == null) Commande.Parameters.AddWithValue("@NAI", Convert.DBNull);

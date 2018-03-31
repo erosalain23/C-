@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DinerPhilosophe.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dsPerso.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,6 +149,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DinerPhilosophe.resx" />
     <EmbeddedResource Include="FicBD1.resx">
       <DependentUpon>FicBD1.cs</DependentUpon>
     </EmbeddedResource>

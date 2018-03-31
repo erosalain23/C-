@@ -5,3 +5,4 @@ E:\C#\ISET2018_CouAcces\ISET2018_CouAcces\bin\Debug\ISET2018_CouClasses.pdb
 E:\C#\ISET2018_CouAcces\ISET2018_CouAcces\obj\Debug\ISET2018_CouAcces.csproj.CoreCompileInputs.cache
 E:\C#\ISET2018_CouAcces\ISET2018_CouAcces\obj\Debug\ISET2018_CouAcces.dll
 E:\C#\ISET2018_CouAcces\ISET2018_CouAcces\obj\Debug\ISET2018_CouAcces.pdb
+E:\C#\ISET2018_CouAcces\ISET2018_CouAcces\obj\Debug\ISET2018_CouAcces.csprojResolveAssemblyReference.cache

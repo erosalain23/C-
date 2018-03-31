@@ -44,6 +44,7 @@
             this.mfBD3 = new System.Windows.Forms.ToolStripMenuItem();
             this.mAide = new System.Windows.Forms.ToolStripMenuItem();
             this.mQuitter = new System.Windows.Forms.ToolStripMenuItem();
+            this.mfDiner = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,8 @@
             this.mfExplorateur,
             this.mfBD1,
             this.mfBD2,
-            this.mfBD3});
+            this.mfBD3,
+            this.mfDiner});
             this.mFenetres.Name = "mFenetres";
             this.mFenetres.Size = new System.Drawing.Size(63, 22);
             this.mFenetres.Text = "Fenetres";
@@ -180,6 +182,13 @@
             this.mQuitter.Text = "Quitter";
             this.mQuitter.Click += new System.EventHandler(this.mQuitter_Click);
             // 
+            // mfDiner
+            // 
+            this.mfDiner.Name = "mfDiner";
+            this.mfDiner.Size = new System.Drawing.Size(187, 22);
+            this.mfDiner.Text = "Philosophes";
+            this.mfDiner.Click += new System.EventHandler(this.mfDiner_Click);
+            // 
             // EcranPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,5 +224,6 @@
         private System.Windows.Forms.ToolStripMenuItem mfBD1;
         private System.Windows.Forms.ToolStripMenuItem mfBD2;
         private System.Windows.Forms.ToolStripMenuItem mfBD3;
+        private System.Windows.Forms.ToolStripMenuItem mfDiner;
     }
 }

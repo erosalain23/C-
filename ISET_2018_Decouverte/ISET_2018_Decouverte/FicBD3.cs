@@ -79,7 +79,7 @@ namespace ISET_2018_Decouverte
                 int nID = (int)dgvPersonne.SelectedRows[0].Cells["ID"].Value;
                 new G_Personne(sChonn).Supprimer(nID);
                 // for testing
-                //bsPersonnes.RemoveCurrent();
+                bsPersonnes.RemoveCurrent();
             }
         }
         private void btnConfirmer_Click(object sender, EventArgs e)
