@@ -16,5 +16,11 @@ namespace Memory_Game
         {
             InitializeComponent();
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            frmGameEngine f = new frmGameEngine();
+            f.ShowDialog();
+        }
     }
 }

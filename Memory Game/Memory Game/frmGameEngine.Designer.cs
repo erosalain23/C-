@@ -1,6 +1,6 @@
 ﻿namespace Memory_Game
 {
-    partial class Form1
+    partial class frmGameEngine
     {
         /// <summary>
         /// Required designer variable.

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWelcome));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
@@ -36,9 +37,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(256, 81);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(269, 81);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(193, 113);
+            this.pictureBox1.Size = new System.Drawing.Size(180, 104);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -46,7 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(279, 27);
+            this.label1.Location = new System.Drawing.Point(294, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 21);
             this.label1.TabIndex = 1;
@@ -54,12 +57,13 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(149, 251);
+            this.btnStart.Location = new System.Drawing.Point(147, 251);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(425, 58);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Start game";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // frmWelcome
             // 
@@ -70,7 +74,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmWelcome";
-            this.Text = "frmWelcome";
+            this.Text = "Welcom to the memory game";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
