@@ -32,6 +32,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
+            this.btnResume = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,15 +62,26 @@
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(425, 58);
             this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "Start game";
+            this.btnStart.Text = "New game";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnResume
+            // 
+            this.btnResume.Location = new System.Drawing.Point(147, 332);
+            this.btnResume.Name = "btnResume";
+            this.btnResume.Size = new System.Drawing.Size(425, 58);
+            this.btnResume.TabIndex = 3;
+            this.btnResume.Text = "Resume game";
+            this.btnResume.UseVisualStyleBackColor = true;
+            this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
             // 
             // frmWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 421);
+            this.Controls.Add(this.btnResume);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnResume;
     }
 }
