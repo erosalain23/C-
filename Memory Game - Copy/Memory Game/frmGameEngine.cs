@@ -130,7 +130,7 @@ namespace Memory_Game
                     {
                         firstClicked = null;
                         secondClicked = null;
-                        pointsPlayerOne += 1;
+                        pointsPlayerTwo += 1;
                     }
                     else
                         timer1.Start();//starting the timer if they did not latch
@@ -234,7 +234,7 @@ namespace Memory_Game
                 if (dialog_result == DialogResult.Yes)
                     SaveGame();
             }
-            Application.Exit();
+            this.Close();
         }
         #endregion
         #region new game form menu bar
@@ -298,7 +298,20 @@ namespace Memory_Game
                 firstClicked = secondClicked = null;
             }
         }
+
+        private void msRules_Click(object sender, EventArgs e)
+        {
+            frmAboutGame f = new frmAboutGame();
+            f.ShowDialog();
+        }
+
+        private void msAbout_Click(object sender, EventArgs e)
+        {
+            frmAuthorInfo f = new frmAuthorInfo();
+            f.ShowDialog();
+        }
         #endregion
+
         #region HideIcons
         private void HideIcons()
         {
@@ -317,19 +330,42 @@ namespace Memory_Game
             string path = @"E:\C#\Memory Game\Game cache\savedGame.txt";
             Label label;
             string[] allIcons = new string[64];
+            List<int> blackCards = new List<int>();
+            List<int> redCards = new List<int>();
 
             for (int i = 0; i < tableLayoutPanel1.Controls.Count ; i++)
             {
-                //converting each control to a label
-                label = tableLayoutPanel1.Controls[i] as Label;
-                allIcons[i] = label.Text;
+                if (tableLayoutPanel1.Controls[i] is Label)
+                {
+                    label = tableLayoutPanel1.Controls[i] as Label; //converting each control to a label
+                    allIcons[i] = label.Text;
+                    if (label.ForeColor == label.BackColor)
+                        continue;
+                    else
+                    {
+                        if (label.ForeColor == Color.Black)
+                            blackCards.Add(i);
+                        else
+                            redCards.Add(i);
+                    }
+                }
+                else
+                    return;
+                   
             }
+            foreach (int i in blackCards)
+                Console.WriteLine(i);
+            Console.ReadLine();
             //if (!File.Exists(path))
             //{
             using (StreamWriter sw = new StreamWriter(path))
             {
                 sw.Write("Icons : ");
                 sw.WriteLine(string.Join("",allIcons));
+                sw.Write("Black cards : ");
+                sw.WriteLine(string.Join(",",blackCards.ToArray()));
+                sw.Write("Red cards : ");
+                sw.WriteLine(string.Join(",",blackCards.ToArray()));
                 //sw.WriteLine("Paler :" + playerOne.ToString());
                 if (playerOne)
                 {

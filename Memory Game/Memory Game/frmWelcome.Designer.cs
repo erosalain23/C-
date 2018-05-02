@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnResume = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,16 +77,30 @@
             this.btnResume.UseVisualStyleBackColor = true;
             this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(147, 416);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(425, 58);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Quit game";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 421);
+            this.ClientSize = new System.Drawing.Size(718, 489);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnResume);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmWelcome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcom to the memory game";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -99,5 +114,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnResume;
+        private System.Windows.Forms.Button button1;
     }
 }

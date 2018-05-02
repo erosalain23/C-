@@ -11,22 +11,26 @@ using System.IO;
 
 namespace Memory_Game
 {
-    public partial class frmWelcome : Form
+    public partial class frmWelcomeScreen : Form
     {
         string path = @"E:\C#\Memory Game\Game cache\savedGame.txt";
         string[] DataRetr = new string[4];
-        public frmWelcome()
+        public frmWelcomeScreen()
         {
             InitializeComponent();
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void btnNewGame_Click(object sender, EventArgs e)
         {
+            Hide();
+            frmAboutGame fAbout = new frmAboutGame();
+            fAbout.ShowDialog();
             frmGameEngine f = new frmGameEngine();
             f.ShowDialog();
+            Show();
         }
 
-        private void btnResume_Click(object sender, EventArgs e)
+        private void btnResumeGame_Click(object sender, EventArgs e)
         {
             //Console.WriteLine(CountTextFileLines(path).ToString());
             ResumeGame();
@@ -40,7 +44,7 @@ namespace Memory_Game
         private void ResumeGame()
         {
             StreamReader sr = new StreamReader(path);
-            for (int i = 0; i < 4 ; i++)
+            for (int i = 0; i < 4; i++)
             {
                 String line = sr.ReadLine();
                 string[] temp = line.Split(':');
@@ -63,6 +67,10 @@ namespace Memory_Game
             }
             return count;
         }
- 
+
+        private void btnQuitGame_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
