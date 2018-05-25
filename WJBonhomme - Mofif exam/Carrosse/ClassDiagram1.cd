@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Carrosse.MonRectangle_tournant">
+    <Position X="1" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAEACgAAAAAAAAAIEAQAAAAQCAABAAAAAAAAAAkEI=</HashCode>
+      <FileName>Rectangle_tournant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carrosse.Bonhomme">
+    <Position X="3.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAAgAAAAAAAAgAQAQBAAAAAAAACAhAAAhABAAAQ=</HashCode>
+      <FileName>Bonhomme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carrosse.Bras">
+    <Position X="5.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAgAQAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>bras.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carrosse.casque">
+    <Position X="8.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAgAAAgAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>casque.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carrosse.decor">
+    <Position X="10.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAgABAgAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>decor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carrosse.Jambe">
+    <Position X="13" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAgQQAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Jambe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carrosse.snowboard">
+    <Position X="15.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAgAAAgAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>snowboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carrosse.MonPoint">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgIAABAAAAAAgAQAAAAAQAAIAIAAABAgACZAA=</HashCode>
+      <FileName>MonPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -116,5 +116,10 @@ namespace ISET_2018_Decouverte
         }
         private void btnAnnuler_Click(object sender, EventArgs e)
         { Activer(true);}
+
+        private void dgvPersonne_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

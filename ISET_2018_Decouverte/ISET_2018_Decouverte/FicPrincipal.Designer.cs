@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EcranPrincipal));
             this.mMenu = new System.Windows.Forms.MenuStrip();
             this.mFenetres = new System.Windows.Forms.ToolStripMenuItem();
             this.mfProgression = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,9 +43,12 @@
             this.mfBD1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mfBD2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mfBD3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mfDiner = new System.Windows.Forms.ToolStripMenuItem();
             this.mAide = new System.Windows.Forms.ToolStripMenuItem();
             this.mQuitter = new System.Windows.Forms.ToolStripMenuItem();
-            this.mfDiner = new System.Windows.Forms.ToolStripMenuItem();
+            this.boutonColores1 = new ISET2018_MesControles.BoutonColores();
+            this.frequence1 = new ISET2018_MesControles.Frequence();
+            this.mfIntegralle = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +81,8 @@
             this.mfBD1,
             this.mfBD2,
             this.mfBD3,
-            this.mfDiner});
+            this.mfDiner,
+            this.mfIntegralle});
             this.mFenetres.Name = "mFenetres";
             this.mFenetres.Size = new System.Drawing.Size(63, 22);
             this.mFenetres.Text = "Fenetres";
@@ -166,6 +171,13 @@
             this.mfBD3.Text = "Base de donnees3";
             this.mfBD3.Click += new System.EventHandler(this.mfBD3_Click);
             // 
+            // mfDiner
+            // 
+            this.mfDiner.Name = "mfDiner";
+            this.mfDiner.Size = new System.Drawing.Size(187, 22);
+            this.mfDiner.Text = "Philosophes";
+            this.mfDiner.Click += new System.EventHandler(this.mfDiner_Click);
+            // 
             // mAide
             // 
             this.mAide.Name = "mAide";
@@ -182,18 +194,51 @@
             this.mQuitter.Text = "Quitter";
             this.mQuitter.Click += new System.EventHandler(this.mQuitter_Click);
             // 
-            // mfDiner
+            // boutonColores1
             // 
-            this.mfDiner.Name = "mfDiner";
-            this.mfDiner.Size = new System.Drawing.Size(187, 22);
-            this.mfDiner.Text = "Philosophes";
-            this.mfDiner.Click += new System.EventHandler(this.mfDiner_Click);
+            this.boutonColores1.couleurDroiteBouton = System.Drawing.Color.LimeGreen;
+            this.boutonColores1.couleurGaucheBouton = System.Drawing.Color.Yellow;
+            this.boutonColores1.Location = new System.Drawing.Point(252, 40);
+            this.boutonColores1.Name = "boutonColores1";
+            this.boutonColores1.Size = new System.Drawing.Size(215, 74);
+            this.boutonColores1.TabIndex = 1;
+            this.boutonColores1.Text = "boutonColores1";
+            this.boutonColores1.TransparenceDroiteBouton = 64;
+            this.boutonColores1.TransparenceGaucheBouton = 64;
+            this.boutonColores1.UseVisualStyleBackColor = true;
+            // 
+            // frequence1
+            // 
+            this.frequence1.Entrees.Add(((ISET2018_MesControles.MonPoint)(resources.GetObject("frequence1.Entrees"))));
+            this.frequence1.Entrees.Add(((ISET2018_MesControles.MonPoint)(resources.GetObject("frequence1.Entrees1"))));
+            this.frequence1.Entrees.Add(((ISET2018_MesControles.MonPoint)(resources.GetObject("frequence1.Entrees2"))));
+            this.frequence1.Entrees.Add(((ISET2018_MesControles.MonPoint)(resources.GetObject("frequence1.Entrees3"))));
+            this.frequence1.Entrees.Add(((ISET2018_MesControles.MonPoint)(resources.GetObject("frequence1.Entrees4"))));
+            this.frequence1.Entrees.Add(((ISET2018_MesControles.MonPoint)(resources.GetObject("frequence1.Entrees5"))));
+            this.frequence1.Location = new System.Drawing.Point(252, 120);
+            this.frequence1.Name = "frequence1";
+            this.frequence1.Size = new System.Drawing.Size(215, 150);
+            this.frequence1.TabIndex = 2;
+            this.frequence1.Trait = System.Drawing.Color.Black;
+            this.frequence1.XMax = 100;
+            this.frequence1.XMin = 0;
+            this.frequence1.YMax = 100;
+            this.frequence1.YMin = 0;
+            // 
+            // mfIntegralle
+            // 
+            this.mfIntegralle.Name = "mfIntegralle";
+            this.mfIntegralle.Size = new System.Drawing.Size(187, 22);
+            this.mfIntegralle.Text = "Integralle";
+            this.mfIntegralle.Click += new System.EventHandler(this.mfIntegralle_Click);
             // 
             // EcranPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 411);
+            this.Controls.Add(this.frequence1);
+            this.Controls.Add(this.boutonColores1);
             this.Controls.Add(this.mMenu);
             this.MainMenuStrip = this.mMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -225,5 +270,8 @@
         private System.Windows.Forms.ToolStripMenuItem mfBD2;
         private System.Windows.Forms.ToolStripMenuItem mfBD3;
         private System.Windows.Forms.ToolStripMenuItem mfDiner;
+        private ISET2018_MesControles.BoutonColores boutonColores1;
+        private ISET2018_MesControles.Frequence frequence1;
+        private System.Windows.Forms.ToolStripMenuItem mfIntegralle;
     }
 }

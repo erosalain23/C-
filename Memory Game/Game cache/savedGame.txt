@@ -1,6 +1,4 @@
-Icons : SdPXeGKCVUImERLJHLWAHbKUYNMcPBNEODRBJGeTdAtZXtOFVCWcQbFYSmDQZMTI
-Black cards : 
-Red cards : 
-Player : False
+Icons : ABWKdSdDNXHVGVGZetCQDbFJLEUTSmMEOKMWBPcYFRYXJLIUACZTtmQIePHbcNOR
+Player : True
 Player One Points : 0
-Player Two Points : 1
+Player Two Points : 2

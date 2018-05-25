@@ -1,0 +1,20 @@
+USE [E:\C#\SQLDATABASE\SQLDATABASE\INTERIMDB.MDF]
+GO
+
+/****** Object:  Table [dbo].[t_entreprise]    Script Date: 5/4/2018 12:11:17 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[t_entreprise](
+	[id_entre] [int] IDENTITY(1,1) NOT NULL,
+	[nom_entre] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_entre] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+

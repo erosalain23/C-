@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using InterimCouAccess;
+using InterimCouClasses;
+using InterimCouGestions;
+using MaterialSkin.Controls;
+using MaterialSkin.Animations;
+using MaterialSkin;
+
+namespace InterimDesktopApp
+{
+    public partial class MainForm : MaterialForm
+    {
+        public DataTable dtInterimeur { get; set; }
+        public DataTable dtEntreprise { get; set; }
+        public DataTable dtPrestation { get; set; }
+        public DataTable dtFacture { get; set; }
+        public BindingSource bsInterimeur { get; set; }
+        public BindingSource bsEntreprise { get; set; }
+        public BindingSource bsPrestation { get; set; }
+        public BindingSource bsFacture { get; set; }
+        private string sChonn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\SqlDatabase\SqlDatabase\InterimDB.mdf;Integrated Security=True;Connect Timeout=30";
+
+        public MainForm()
+        {
+            InitializeComponent();
+            switch (mainTabControl.SelectedIndex)
+            {
+                case 0:
+                    // Interimeur
+                    RemplirDgvInterimeur();
+                    if (dgvInterimeur.Rows.Count > 0)
+                    {
+                        Activer(true);
+                        dgvInterimeur.Rows[0].Selected = true;
+                    }
+                    else
+                        Activer(false);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+
+            }
+        }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            frmAjouterInterimeur f = new frmAjouterInterimeur(dtInterimeur);
+            f.ShowDialog();
+            RemplirDgvInterimeur();
+            Activer(true);
+        }
+        private void Activer(bool lNavigation)
+        {
+            btnAjouterInte.Enabled = btnAjouterEntre.Enabled = btnAjouterPresta.Enabled = btnGenererFact.Enabled = lNavigation;
+            btnModifierInte.Enabled = btnModifierEntre.Enabled = btnModifierPresta.Enabled = !lNavigation;
+            btnSupprimerInte.Enabled = btnSupprimerEntre.Enabled = btnSupprimerFact.Enabled = btnRefreshPresta.Enabled = !lNavigation;
+            btnRefreshInte.Enabled = btnRefreshEntre.Enabled = btnRefreshPresta.Enabled=btnRefreshFact.Enabled = !lNavigation;
+
+        }
+        private void RemplirDgvInterimeur()
+        {
+            dgvInterimeur.ForeColor = Color.Green;
+            dtInterimeur = new DataTable();
+            dtInterimeur.Columns.Add(new DataColumn("ID", Type.GetType("System.Int32")));
+            dtInterimeur.Columns.Add("Nom");
+            dtInterimeur.Columns.Add("Prenom");
+            dtInterimeur.Columns.Add("Specialisation");
+            List<C_t_interimeur> Interimeurs = new G_t_interimeur(sChonn).Lire("");
+            foreach (C_t_interimeur interimeur in Interimeurs)
+                dtInterimeur.Rows.Add(interimeur.id_inte, interimeur.nom_inte, interimeur.prenom_inte, interimeur.specialisation);
+            bsInterimeur = new BindingSource();
+            bsInterimeur.DataSource = dtInterimeur;
+            dgvInterimeur.DataSource = bsInterimeur;
+        }
+    }
+}

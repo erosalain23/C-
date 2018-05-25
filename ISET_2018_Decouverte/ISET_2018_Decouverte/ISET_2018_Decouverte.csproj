@@ -41,6 +41,9 @@
     <Reference Include="ISET2018_CouGestion">
       <HintPath>..\..\ISET2018_CouGestion\ISET2018_CouGestion\bin\Debug\ISET2018_CouGestion.dll</HintPath>
     </Reference>
+    <Reference Include="ISET2018_MesControles">
+      <HintPath>..\..\ISET2018_MesControles\ISET2018_MesControles\bin\Debug\ISET2018_MesControles.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -117,11 +120,23 @@
     <Compile Include="FicExplorateur.Designer.cs">
       <DependentUpon>FicExplorateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FicExpressionRegulieres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FicExpressionRegulieres.Designer.cs">
+      <DependentUpon>FicExpressionRegulieres.cs</DependentUpon>
+    </Compile>
     <Compile Include="FicHorloge.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FicHorloge.Designer.cs">
       <DependentUpon>FicHorloge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FicIntegrales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FicIntegrales.Designer.cs">
+      <DependentUpon>FicIntegrales.cs</DependentUpon>
     </Compile>
     <Compile Include="FicListe.cs">
       <SubType>Form</SubType>
@@ -177,8 +192,14 @@
     <EmbeddedResource Include="FicExplorateur.resx">
       <DependentUpon>FicExplorateur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FicExpressionRegulieres.resx">
+      <DependentUpon>FicExpressionRegulieres.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FicHorloge.resx">
       <DependentUpon>FicHorloge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FicIntegrales.resx">
+      <DependentUpon>FicIntegrales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FicListe.resx">
       <DependentUpon>FicListe.cs</DependentUpon>

@@ -1,0 +1,6 @@
+Icons : YMJALPbtOXSUABQHWYNZXmFIeTZLQeSHVGNKcROIBCWtdTDMEmGRdUEbDcCPKJFV
+Black cards : 
+Red cards : 
+Player : True
+Player One Points : 0
+Player Two Points : 0

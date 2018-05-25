@@ -106,6 +106,12 @@ namespace ISET_2018_Decouverte
             EcranDinerPhilosophes f = new EcranDinerPhilosophes();
             f.ShowDialog();
         }
+
+        private void mfIntegralle_Click(object sender, EventArgs e)
+        {
+            EcranIntegrales f = new EcranIntegrales();
+            f.ShowDialog();
+        }
     }
 }
 
