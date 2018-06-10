@@ -24,8 +24,6 @@ namespace Carrosse
 
         }
         #endregion
-    
-
         #region Méthodes
         public void Bouger(int deplX, int deplY, double angleH, double angleM, double angleB)
         {

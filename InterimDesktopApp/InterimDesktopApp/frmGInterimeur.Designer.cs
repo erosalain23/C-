@@ -1,6 +1,6 @@
 ﻿namespace InterimDesktopApp
 {
-    partial class FrmGInterimeur
+    partial class btnEmpDuTemps
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             this.tbPrenom = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.cbMetier = new MetroFramework.Controls.MetroComboBox();
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
+            this.chbFacturee = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.btnAjouter = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSupprimer = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -51,6 +51,12 @@
             this.btnConfirmer = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lbBonus = new MetroFramework.Controls.MetroLabel();
             this.tbBonus = new MetroFramework.Controls.MetroTextBox();
+            this.btnEmplDuTmp = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnMomntLbr = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.cbEntreprise = new MetroFramework.Controls.MetroComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInterimeur)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,9 +164,9 @@
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.Location = new System.Drawing.Point(23, 424);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(51, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(90, 19);
             this.metroLabel4.TabIndex = 1;
-            this.metroLabel4.Text = "Metier:";
+            this.metroLabel4.Text = "Specialisation:";
             // 
             // cbMetier
             // 
@@ -171,15 +177,15 @@
             this.cbMetier.Size = new System.Drawing.Size(154, 29);
             this.cbMetier.TabIndex = 3;
             // 
-            // metroCheckBox1
+            // chbFacturee
             // 
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(395, 321);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(68, 15);
-            this.metroCheckBox1.TabIndex = 4;
-            this.metroCheckBox1.Text = "Facturee";
-            this.metroCheckBox1.UseVisualStyleBackColor = true;
+            this.chbFacturee.AutoSize = true;
+            this.chbFacturee.Location = new System.Drawing.Point(395, 321);
+            this.chbFacturee.Name = "chbFacturee";
+            this.chbFacturee.Size = new System.Drawing.Size(76, 15);
+            this.chbFacturee.TabIndex = 4;
+            this.chbFacturee.Text = "Un par Un";
+            this.chbFacturee.UseVisualStyleBackColor = true;
             // 
             // metroLabel5
             // 
@@ -193,7 +199,7 @@
             // btnAjouter
             // 
             this.btnAjouter.Depth = 0;
-            this.btnAjouter.Location = new System.Drawing.Point(24, 476);
+            this.btnAjouter.Location = new System.Drawing.Point(24, 505);
             this.btnAjouter.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Primary = true;
@@ -206,7 +212,7 @@
             // btnSupprimer
             // 
             this.btnSupprimer.Depth = 0;
-            this.btnSupprimer.Location = new System.Drawing.Point(346, 476);
+            this.btnSupprimer.Location = new System.Drawing.Point(346, 505);
             this.btnSupprimer.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Primary = true;
@@ -219,7 +225,7 @@
             // btnEditer
             // 
             this.btnEditer.Depth = 0;
-            this.btnEditer.Location = new System.Drawing.Point(188, 476);
+            this.btnEditer.Location = new System.Drawing.Point(188, 505);
             this.btnEditer.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditer.Name = "btnEditer";
             this.btnEditer.Primary = true;
@@ -232,7 +238,7 @@
             // btnAnnuler
             // 
             this.btnAnnuler.Depth = 0;
-            this.btnAnnuler.Location = new System.Drawing.Point(662, 476);
+            this.btnAnnuler.Location = new System.Drawing.Point(662, 505);
             this.btnAnnuler.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Primary = true;
@@ -245,7 +251,7 @@
             // btnConfirmer
             // 
             this.btnConfirmer.Depth = 0;
-            this.btnConfirmer.Location = new System.Drawing.Point(504, 476);
+            this.btnConfirmer.Location = new System.Drawing.Point(504, 505);
             this.btnConfirmer.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnConfirmer.Name = "btnConfirmer";
             this.btnConfirmer.Primary = true;
@@ -266,24 +272,91 @@
             // 
             // tbBonus
             // 
-            this.tbBonus.Location = new System.Drawing.Point(450, 349);
+            this.tbBonus.Location = new System.Drawing.Point(502, 349);
             this.tbBonus.Name = "tbBonus";
             this.tbBonus.PromptText = "Bonus rate";
             this.tbBonus.Size = new System.Drawing.Size(154, 23);
             this.tbBonus.TabIndex = 2;
             // 
-            // FrmGInterimeur
+            // btnEmplDuTmp
+            // 
+            this.btnEmplDuTmp.Depth = 0;
+            this.btnEmplDuTmp.Location = new System.Drawing.Point(662, 385);
+            this.btnEmplDuTmp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEmplDuTmp.Name = "btnEmplDuTmp";
+            this.btnEmplDuTmp.Primary = true;
+            this.btnEmplDuTmp.Size = new System.Drawing.Size(152, 36);
+            this.btnEmplDuTmp.TabIndex = 7;
+            this.btnEmplDuTmp.Text = "PDF";
+            this.btnEmplDuTmp.UseVisualStyleBackColor = true;
+            this.btnEmplDuTmp.Click += new System.EventHandler(this.btnEmplDuTmp_Click);
+            // 
+            // btnMomntLbr
+            // 
+            this.btnMomntLbr.Depth = 0;
+            this.btnMomntLbr.Location = new System.Drawing.Point(662, 427);
+            this.btnMomntLbr.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnMomntLbr.Name = "btnMomntLbr";
+            this.btnMomntLbr.Primary = true;
+            this.btnMomntLbr.Size = new System.Drawing.Size(152, 36);
+            this.btnMomntLbr.TabIndex = 7;
+            this.btnMomntLbr.Text = "PDF";
+            this.btnMomntLbr.UseVisualStyleBackColor = true;
+            this.btnMomntLbr.Click += new System.EventHandler(this.btnMomntLbr_Click);
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(346, 402);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(187, 19);
+            this.metroLabel6.TabIndex = 9;
+            this.metroLabel6.Text = "Document d\'emploi du temps:";
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(346, 444);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(216, 19);
+            this.metroLabel7.TabIndex = 9;
+            this.metroLabel7.Text = "Les moments libres de l\'interimaire:";
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(23, 459);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel8.TabIndex = 1;
+            this.metroLabel8.Text = "Entreprise:";
+            // 
+            // cbEntreprise
+            // 
+            this.cbEntreprise.FormattingEnabled = true;
+            this.cbEntreprise.ItemHeight = 23;
+            this.cbEntreprise.Location = new System.Drawing.Point(127, 449);
+            this.cbEntreprise.Name = "cbEntreprise";
+            this.cbEntreprise.Size = new System.Drawing.Size(154, 29);
+            this.cbEntreprise.TabIndex = 3;
+            // 
+            // btnEmpDuTemps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 536);
+            this.ClientSize = new System.Drawing.Size(850, 573);
+            this.Controls.Add(this.metroLabel7);
+            this.Controls.Add(this.metroLabel6);
+            this.Controls.Add(this.btnMomntLbr);
+            this.Controls.Add(this.btnEmplDuTmp);
             this.Controls.Add(this.btnConfirmer);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEditer);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.metroLabel5);
-            this.Controls.Add(this.metroCheckBox1);
+            this.Controls.Add(this.chbFacturee);
+            this.Controls.Add(this.cbEntreprise);
             this.Controls.Add(this.cbMetier);
             this.Controls.Add(this.tbPrenom);
             this.Controls.Add(this.metroLabel3);
@@ -291,11 +364,12 @@
             this.Controls.Add(this.lbBonus);
             this.Controls.Add(this.tbNom);
             this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.dgvInterimeur);
-            this.Name = "FrmGInterimeur";
+            this.Name = "btnEmpDuTemps";
             this.Text = "Info Interimeur";
             ((System.ComponentModel.ISupportInitialize)(this.dgvInterimeur)).EndInit();
             this.ResumeLayout(false);
@@ -314,7 +388,7 @@
         private MetroFramework.Controls.MetroTextBox tbPrenom;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroComboBox cbMetier;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
+        private MetroFramework.Controls.MetroCheckBox chbFacturee;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MaterialSkin.Controls.MaterialRaisedButton btnAjouter;
         private MaterialSkin.Controls.MaterialRaisedButton btnSupprimer;
@@ -328,5 +402,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BonusSal;
         private MetroFramework.Controls.MetroLabel lbBonus;
         private MetroFramework.Controls.MetroTextBox tbBonus;
+        private MaterialSkin.Controls.MaterialRaisedButton btnEmplDuTmp;
+        private MaterialSkin.Controls.MaterialRaisedButton btnMomntLbr;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroComboBox cbEntreprise;
     }
 }

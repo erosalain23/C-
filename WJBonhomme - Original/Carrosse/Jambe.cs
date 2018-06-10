@@ -16,7 +16,6 @@ namespace Carrosse
         private MonRectangle_tournant _Tibia, _Pied;
      
         #endregion
-
         #region Constructeurs
         public Jambe(PictureBox hebergeur, int xsg, int ysg, int longueur, int hauteur, double angle, Color crayon, Color pot) : base(hebergeur, xsg/2, ysg, longueur, hauteur, angle, crayon, pot)
         {

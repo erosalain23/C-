@@ -35,7 +35,6 @@
             this.btnAjouter = new MaterialSkin.Controls.MaterialRaisedButton();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.cbFacturee = new MetroFramework.Controls.MetroCheckBox();
-            this.cbFacture = new MetroFramework.Controls.MetroComboBox();
             this.tbSalPresta = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.tbNomPresta = new MetroFramework.Controls.MetroTextBox();
@@ -58,6 +57,9 @@
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.cbCategorie = new MetroFramework.Controls.MetroComboBox();
             this.llbCateg = new MetroFramework.Controls.MetroLink();
+            this.cbFacture = new System.Windows.Forms.ComboBox();
+            this.btnNonEncFct = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestation)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,15 +146,6 @@
             this.cbFacturee.TabIndex = 16;
             this.cbFacturee.Text = "Facturee";
             this.cbFacturee.UseVisualStyleBackColor = true;
-            // 
-            // cbFacture
-            // 
-            this.cbFacture.FormattingEnabled = true;
-            this.cbFacture.ItemHeight = 23;
-            this.cbFacture.Location = new System.Drawing.Point(640, 447);
-            this.cbFacture.Name = "cbFacture";
-            this.cbFacture.Size = new System.Drawing.Size(200, 29);
-            this.cbFacture.TabIndex = 15;
             // 
             // tbSalPresta
             // 
@@ -336,11 +329,43 @@
             this.llbCateg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.llbCateg.Click += new System.EventHandler(this.llbCateg_Click);
             // 
+            // cbFacture
+            // 
+            this.cbFacture.FormattingEnabled = true;
+            this.cbFacture.Location = new System.Drawing.Point(640, 454);
+            this.cbFacture.Name = "cbFacture";
+            this.cbFacture.Size = new System.Drawing.Size(200, 21);
+            this.cbFacture.TabIndex = 27;
+            // 
+            // btnNonEncFct
+            // 
+            this.btnNonEncFct.Depth = 0;
+            this.btnNonEncFct.Location = new System.Drawing.Point(366, 432);
+            this.btnNonEncFct.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNonEncFct.Name = "btnNonEncFct";
+            this.btnNonEncFct.Primary = true;
+            this.btnNonEncFct.Size = new System.Drawing.Size(152, 33);
+            this.btnNonEncFct.TabIndex = 21;
+            this.btnNonEncFct.Text = "PDF";
+            this.btnNonEncFct.UseVisualStyleBackColor = true;
+            this.btnNonEncFct.Click += new System.EventHandler(this.btnSupprimer_Click_1);
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(46, 446);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(258, 19);
+            this.metroLabel9.TabIndex = 28;
+            this.metroLabel9.Text = "Facture des prestation non encore facturee";
+            // 
             // FrmGPrestation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 539);
+            this.Controls.Add(this.metroLabel9);
+            this.Controls.Add(this.cbFacture);
             this.Controls.Add(this.llbCateg);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel6);
@@ -349,12 +374,12 @@
             this.Controls.Add(this.btnConfirmer);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEditer);
+            this.Controls.Add(this.btnNonEncFct);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.cbFacturee);
             this.Controls.Add(this.cbCategorie);
-            this.Controls.Add(this.cbFacture);
             this.Controls.Add(this.tbSalPresta);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.tbNomPresta);
@@ -364,6 +389,7 @@
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.dgvPrestation);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FrmGPrestation";
             this.Text = "Info Prestation";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestation)).EndInit();
@@ -381,7 +407,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnAjouter;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroCheckBox cbFacturee;
-        private MetroFramework.Controls.MetroComboBox cbFacture;
         private MetroFramework.Controls.MetroTextBox tbSalPresta;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroTextBox tbNomPresta;
@@ -404,5 +429,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SalTravail;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCateg;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFact;
+        private System.Windows.Forms.ComboBox cbFacture;
+        private MaterialSkin.Controls.MaterialRaisedButton btnNonEncFct;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
     }
 }

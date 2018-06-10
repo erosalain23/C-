@@ -21,6 +21,7 @@ namespace InterimDesktopApp
             var skinManager = MaterialSkin.MaterialSkinManager.Instance;
             skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.BlueGrey600, MaterialSkin.Primary.Teal100, MaterialSkin.Primary.Teal300, MaterialSkin.Accent.Green400, MaterialSkin.TextShade.WHITE);
             InitializeComponent();
+            _info.CurrencySymbol = " (€) ";
             RemplirDgv();
             if (dgvCategorie.Rows.Count > 0)
             {
@@ -41,7 +42,6 @@ namespace InterimDesktopApp
         }
         private void RemplirDgv()
         {
-            _info.CurrencySymbol = " (€) ";
             DtCategorie=new DataTable();
             DtCategorie.Columns.Add(new DataColumn("id_cat", Type.GetType("System.Int32") ?? throw new InvalidOperationException()));
             DtCategorie.Columns.Add("nom_cat");
@@ -55,7 +55,7 @@ namespace InterimDesktopApp
         }
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
-            _info.CurrencySymbol = " (€) ";
+            _info.CurrencySymbol = " € ";
             if (string.IsNullOrEmpty(tbId.Text))
             {
                 if (string.IsNullOrEmpty(tbCateg.Text) || string.IsNullOrEmpty(tbSal.Text))

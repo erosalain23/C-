@@ -16,7 +16,7 @@ namespace InterimDesktopApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmGFacture());
+            Application.Run(new MainForm());
         }
     }
 }

@@ -30,6 +30,9 @@
         {
             this.btnAnnuler = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dgvCategorie = new System.Windows.Forms.DataGridView();
+            this.id_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nom_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sal_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.tbSal = new MetroFramework.Controls.MetroTextBox();
@@ -40,9 +43,6 @@
             this.btnSupprimer = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnEditer = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnAjouter = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.sal_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nom_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorie)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +71,26 @@
             this.dgvCategorie.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvCategorie.Size = new System.Drawing.Size(714, 206);
             this.dgvCategorie.TabIndex = 3;
+            // 
+            // id_cat
+            // 
+            this.id_cat.DataPropertyName = "id_cat";
+            this.id_cat.HeaderText = "ID";
+            this.id_cat.Name = "id_cat";
+            // 
+            // nom_cat
+            // 
+            this.nom_cat.DataPropertyName = "nom_cat";
+            this.nom_cat.HeaderText = "CATEGORIE";
+            this.nom_cat.Name = "nom_cat";
+            this.nom_cat.Width = 400;
+            // 
+            // sal_cat
+            // 
+            this.sal_cat.DataPropertyName = "sal_cat";
+            this.sal_cat.HeaderText = "SALAIRE";
+            this.sal_cat.Name = "sal_cat";
+            this.sal_cat.Width = 200;
             // 
             // metroLabel1
             // 
@@ -174,26 +194,6 @@
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
-            // 
-            // sal_cat
-            // 
-            this.sal_cat.DataPropertyName = "sal_cat";
-            this.sal_cat.HeaderText = "SALAIRE";
-            this.sal_cat.Name = "sal_cat";
-            this.sal_cat.Width = 200;
-            // 
-            // nom_cat
-            // 
-            this.nom_cat.DataPropertyName = "nom_cat";
-            this.nom_cat.HeaderText = "CATEGORIE";
-            this.nom_cat.Name = "nom_cat";
-            this.nom_cat.Width = 400;
-            // 
-            // id_cat
-            // 
-            this.id_cat.DataPropertyName = "id_cat";
-            this.id_cat.HeaderText = "ID";
-            this.id_cat.Name = "id_cat";
             // 
             // FrmGCategorie
             // 

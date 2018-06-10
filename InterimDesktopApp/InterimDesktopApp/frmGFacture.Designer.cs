@@ -46,6 +46,10 @@
             this.cbInte = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.btnCA = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.cbEntre2 = new System.Windows.Forms.ComboBox();
+            this.cbInte2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,7 +196,7 @@
             // 
             this.cbEntre.FormattingEnabled = true;
             this.cbEntre.ItemHeight = 23;
-            this.cbEntre.Location = new System.Drawing.Point(520, 332);
+            this.cbEntre.Location = new System.Drawing.Point(529, 332);
             this.cbEntre.Name = "cbEntre";
             this.cbEntre.Size = new System.Drawing.Size(121, 29);
             this.cbEntre.TabIndex = 24;
@@ -201,7 +205,7 @@
             // 
             this.cbInte.FormattingEnabled = true;
             this.cbInte.ItemHeight = 23;
-            this.cbInte.Location = new System.Drawing.Point(520, 364);
+            this.cbInte.Location = new System.Drawing.Point(529, 364);
             this.cbInte.Name = "cbInte";
             this.cbInte.Size = new System.Drawing.Size(121, 29);
             this.cbInte.TabIndex = 24;
@@ -224,11 +228,52 @@
             this.metroLabel4.TabIndex = 11;
             this.metroLabel4.Text = "Entreprise ID:";
             // 
+            // btnCA
+            // 
+            this.btnCA.Depth = 0;
+            this.btnCA.Location = new System.Drawing.Point(529, 399);
+            this.btnCA.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCA.Name = "btnCA";
+            this.btnCA.Primary = true;
+            this.btnCA.Size = new System.Drawing.Size(152, 33);
+            this.btnCA.TabIndex = 25;
+            this.btnCA.Text = "PDF";
+            this.btnCA.UseVisualStyleBackColor = true;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(407, 415);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(46, 19);
+            this.metroLabel5.TabIndex = 26;
+            this.metroLabel5.Text = "CA/an";
+            // 
+            // cbEntre2
+            // 
+            this.cbEntre2.FormattingEnabled = true;
+            this.cbEntre2.Location = new System.Drawing.Point(677, 340);
+            this.cbEntre2.Name = "cbEntre2";
+            this.cbEntre2.Size = new System.Drawing.Size(121, 21);
+            this.cbEntre2.TabIndex = 27;
+            // 
+            // cbInte2
+            // 
+            this.cbInte2.FormattingEnabled = true;
+            this.cbInte2.Location = new System.Drawing.Point(677, 371);
+            this.cbInte2.Name = "cbInte2";
+            this.cbInte2.Size = new System.Drawing.Size(121, 21);
+            this.cbInte2.TabIndex = 27;
+            // 
             // FrmGFacture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 560);
+            this.Controls.Add(this.cbInte2);
+            this.Controls.Add(this.cbEntre2);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.btnCA);
             this.Controls.Add(this.cbInte);
             this.Controls.Add(this.cbEntre);
             this.Controls.Add(this.dtpFacture);
@@ -271,5 +316,9 @@
         private MetroFramework.Controls.MetroComboBox cbInte;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCA;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private System.Windows.Forms.ComboBox cbEntre2;
+        private System.Windows.Forms.ComboBox cbInte2;
     }
 }

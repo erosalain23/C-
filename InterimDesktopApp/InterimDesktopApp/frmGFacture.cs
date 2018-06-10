@@ -9,6 +9,11 @@ namespace InterimDesktopApp
 {
     public partial class FrmGFacture : MetroFramework.Forms.MetroForm
     {
+        public List<C_t_categorie> Categories { get; set; }
+        public List<C_t_entreprise> Entreprises { get; set; }
+        public List<C_t_facture> Factures { get; set; }
+        public List<C_t_interimeur> Interimeurs { get; set; }
+        public List<C_t_travail> Prestations { get; set; }
         public DataTable DtFacture { get; set; }
         public BindingSource BsFacture { get; set; }
         private const string SChonn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\NewInterimDB\NewInterimDB.mdf;Integrated Security=True;Connect Timeout=30";
@@ -16,6 +21,7 @@ namespace InterimDesktopApp
         public FrmGFacture()
         {
             InitializeComponent();
+            InitialiseListClasses();
             RemplireComboBox();
             RemplireDgv();
             if (dgvFacture.Rows.Count <= 0) return;
@@ -44,7 +50,11 @@ namespace InterimDesktopApp
             DtFacture.Columns.Add("IdInte");
             List<C_t_facture> factures = new G_t_facture(SChonn).Lire("Nom");
             foreach (C_t_facture facture in factures)
-                DtFacture.Rows.Add(facture.date_fact,facture.id_entre,facture.id_inte);
+            {
+                C_t_entreprise entreprise = Entreprises.Find(x => x.id_entre == facture.id_entre);
+                C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == facture.id_inte);
+                DtFacture.Rows.Add(facture.id_fact, facture.date_fact.ToString("dd/MM/yyyy"), entreprise.nom_entre, interimeur.nom_inte);
+            }
             BsFacture = new BindingSource {DataSource = DtFacture};
             dgvFacture.DataSource = BsFacture;
         }
@@ -58,10 +68,12 @@ namespace InterimDesktopApp
             else
             {
                 var nId = int.Parse(tbId.Text);
-                new G_t_facture(SChonn).Modifier(nId, dtpFacture.Value, Convert.ToInt32(cbEntre.SelectedItem), Convert.ToInt32(cbInte.SelectedItem));
+                C_t_interimeur interimeur = Interimeurs.Find(x => x.nom_inte == cbInte2.Text);
+                C_t_entreprise entreprise = Entreprises.Find(x => x.nom_entre == cbEntre2.Text);
+                new G_t_facture(SChonn).Modifier(nId,dtpFacture.Value,interimeur.id_inte,entreprise.id_entre);
                 dgvFacture.SelectedRows[0].Cells["DateFact"].Value = DtFacture;
                 dgvFacture.SelectedRows[0].Cells["IdEntre"].Value = cbEntre.Text;
-                dgvFacture.SelectedRows[0].Cells["IdInte"].Value = cbInte.SelectedItem;
+                dgvFacture.SelectedRows[0].Cells["IdInte"].Value = cbInte.Text;
                 BsFacture.EndEdit();
                 Activer(true);
             }
@@ -82,9 +94,11 @@ namespace InterimDesktopApp
                 Activer(false);
                 tbId.Text = dgvFacture.SelectedRows[0].Cells["IdFact"].Value.ToString();
                 var facture = new G_t_facture(SChonn).Lire_ID(int.Parse(tbId.Text));
+                C_t_entreprise entreprise = Entreprises.Find(x => x.id_entre == facture.id_entre);
+                C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == facture.id_inte);
                 dtpFacture.Value = facture.date_fact;
-                cbEntre.Text = facture.id_entre.ToString();
-                cbInte.Text = facture.id_inte.ToString();
+                cbEntre2.Text = entreprise.nom_entre.ToString();
+                cbInte2.Text = interimeur.nom_inte.ToString();
             }
             else
                 MessageBox.Show(@"There is no row selected!");
@@ -105,12 +119,22 @@ namespace InterimDesktopApp
             List<C_t_entreprise> entreprises = new G_t_entreprise(SChonn).Lire("Nom");
             List<C_t_interimeur> interimeurs = new G_t_interimeur(SChonn).Lire("IdCateg");
             foreach (var entreprise in entreprises)
-                cbEntre.Items.Add(entreprise.nom_entre);
+                cbEntre2.Items.Add(entreprise.nom_entre);
             foreach (var interimeur in interimeurs)
-                cbInte.Items.Add(interimeur.nom_inte);
+                cbInte2.Items.Add(interimeur.nom_inte);
         }
         private void btnAnnuler_Click(object sender, EventArgs e) => Activer(true);
         private void RefreshDgv() => RemplireDgv();
         private void ClearTb() => tbId.Text = "";
+        private void InitialiseListClasses()
+        {
+            // this function is going to initialise all of my list classes every time i call it
+            Categories = new G_t_categorie(SChonn).Lire("IdCateg");
+            Entreprises = new G_t_entreprise(SChonn).Lire("IdEntre");
+            Interimeurs = new G_t_interimeur(SChonn).Lire("IdInte");
+            Factures = new G_t_facture(SChonn).Lire("IdFact");
+            Prestations = new G_t_travail(SChonn).Lire("IdTravail");
+        }
     }
+
 }

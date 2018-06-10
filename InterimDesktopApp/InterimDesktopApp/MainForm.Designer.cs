@@ -34,23 +34,23 @@
             this.btnGeEntre = new MetroFramework.Controls.MetroTile();
             this.btnGeFact = new MetroFramework.Controls.MetroTile();
             this.dgvInterimeur = new System.Windows.Forms.DataGridView();
+            this.IdInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrenomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEntreprise = new System.Windows.Forms.DataGridView();
+            this.IdEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPrestation = new System.Windows.Forms.DataGridView();
+            this.IdPresta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomPresta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomCateg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFacture = new System.Windows.Forms.DataGridView();
+            this.IdFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGClient = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnGInterimeur = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnGFacture = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnGPrestation = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.IdPresta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomPresta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomCateg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrenomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInterimeur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntreprise)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestation)).BeginInit();
@@ -64,6 +64,7 @@
             this.btnRefresh.Size = new System.Drawing.Size(75, 62);
             this.btnRefresh.TabIndex = 0;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnGePresta
             // 
@@ -114,6 +115,26 @@
             this.dgvInterimeur.Size = new System.Drawing.Size(399, 154);
             this.dgvInterimeur.TabIndex = 1;
             // 
+            // IdInte
+            // 
+            this.IdInte.DataPropertyName = "IdInte";
+            this.IdInte.HeaderText = "ID";
+            this.IdInte.Name = "IdInte";
+            // 
+            // NomInte
+            // 
+            this.NomInte.DataPropertyName = "NomInte";
+            this.NomInte.HeaderText = "NOM";
+            this.NomInte.Name = "NomInte";
+            this.NomInte.Width = 130;
+            // 
+            // PrenomInte
+            // 
+            this.PrenomInte.DataPropertyName = "PrenomInte";
+            this.PrenomInte.HeaderText = "PRENOM";
+            this.PrenomInte.Name = "PrenomInte";
+            this.PrenomInte.Width = 130;
+            // 
             // dgvEntreprise
             // 
             this.dgvEntreprise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -125,6 +146,20 @@
             this.dgvEntreprise.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvEntreprise.Size = new System.Drawing.Size(399, 154);
             this.dgvEntreprise.TabIndex = 1;
+            // 
+            // IdEntre
+            // 
+            this.IdEntre.DataPropertyName = "IdEntre";
+            this.IdEntre.HeaderText = "ID";
+            this.IdEntre.Name = "IdEntre";
+            this.IdEntre.Width = 140;
+            // 
+            // NomEntre
+            // 
+            this.NomEntre.DataPropertyName = "NomEntre";
+            this.NomEntre.HeaderText = "NOM";
+            this.NomEntre.Name = "NomEntre";
+            this.NomEntre.Width = 220;
             // 
             // dgvPrestation
             // 
@@ -138,71 +173,6 @@
             this.dgvPrestation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvPrestation.Size = new System.Drawing.Size(399, 154);
             this.dgvPrestation.TabIndex = 1;
-            // 
-            // dgvFacture
-            // 
-            this.dgvFacture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFacture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdFact,
-            this.DateFact});
-            this.dgvFacture.Location = new System.Drawing.Point(471, 371);
-            this.dgvFacture.Name = "dgvFacture";
-            this.dgvFacture.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvFacture.Size = new System.Drawing.Size(399, 154);
-            this.dgvFacture.TabIndex = 1;
-            // 
-            // btnGClient
-            // 
-            this.btnGClient.Depth = 0;
-            this.btnGClient.Location = new System.Drawing.Point(471, 328);
-            this.btnGClient.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnGClient.Name = "btnGClient";
-            this.btnGClient.Primary = true;
-            this.btnGClient.Size = new System.Drawing.Size(399, 36);
-            this.btnGClient.TabIndex = 3;
-            this.btnGClient.Text = "Gerer";
-            this.btnGClient.UseVisualStyleBackColor = true;
-            this.btnGClient.Click += new System.EventHandler(this.btnGeEntre_Click);
-            // 
-            // btnGInterimeur
-            // 
-            this.btnGInterimeur.BackColor = System.Drawing.Color.White;
-            this.btnGInterimeur.Depth = 0;
-            this.btnGInterimeur.Location = new System.Drawing.Point(23, 327);
-            this.btnGInterimeur.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnGInterimeur.Name = "btnGInterimeur";
-            this.btnGInterimeur.Primary = true;
-            this.btnGInterimeur.Size = new System.Drawing.Size(399, 36);
-            this.btnGInterimeur.TabIndex = 3;
-            this.btnGInterimeur.Text = "Gerer";
-            this.btnGInterimeur.UseVisualStyleBackColor = false;
-            this.btnGInterimeur.Click += new System.EventHandler(this.btnGInte_Click);
-            // 
-            // btnGFacture
-            // 
-            this.btnGFacture.Depth = 0;
-            this.btnGFacture.Location = new System.Drawing.Point(471, 531);
-            this.btnGFacture.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnGFacture.Name = "btnGFacture";
-            this.btnGFacture.Primary = true;
-            this.btnGFacture.Size = new System.Drawing.Size(399, 36);
-            this.btnGFacture.TabIndex = 3;
-            this.btnGFacture.Text = "Gerer";
-            this.btnGFacture.UseVisualStyleBackColor = true;
-            this.btnGFacture.Click += new System.EventHandler(this.btnGeFact_Click);
-            // 
-            // btnGPrestation
-            // 
-            this.btnGPrestation.Depth = 0;
-            this.btnGPrestation.Location = new System.Drawing.Point(23, 530);
-            this.btnGPrestation.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnGPrestation.Name = "btnGPrestation";
-            this.btnGPrestation.Primary = true;
-            this.btnGPrestation.Size = new System.Drawing.Size(399, 36);
-            this.btnGPrestation.TabIndex = 3;
-            this.btnGPrestation.Text = "Gerer";
-            this.btnGPrestation.UseVisualStyleBackColor = true;
-            this.btnGPrestation.Click += new System.EventHandler(this.btnGePresta_Click);
             // 
             // IdPresta
             // 
@@ -225,6 +195,18 @@
             this.NomCateg.Name = "NomCateg";
             this.NomCateg.Width = 155;
             // 
+            // dgvFacture
+            // 
+            this.dgvFacture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFacture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdFact,
+            this.DateFact});
+            this.dgvFacture.Location = new System.Drawing.Point(471, 371);
+            this.dgvFacture.Name = "dgvFacture";
+            this.dgvFacture.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvFacture.Size = new System.Drawing.Size(399, 154);
+            this.dgvFacture.TabIndex = 1;
+            // 
             // IdFact
             // 
             this.IdFact.DataPropertyName = "IdFact";
@@ -239,39 +221,58 @@
             this.DateFact.Name = "DateFact";
             this.DateFact.Width = 200;
             // 
-            // IdInte
+            // btnGClient
             // 
-            this.IdInte.DataPropertyName = "IdInte";
-            this.IdInte.HeaderText = "ID";
-            this.IdInte.Name = "IdInte";
+            this.btnGClient.Depth = 0;
+            this.btnGClient.Location = new System.Drawing.Point(471, 328);
+            this.btnGClient.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGClient.Name = "btnGClient";
+            this.btnGClient.Primary = true;
+            this.btnGClient.Size = new System.Drawing.Size(399, 36);
+            this.btnGClient.TabIndex = 3;
+            this.btnGClient.Text = "Gerer entreprise";
+            this.btnGClient.UseVisualStyleBackColor = true;
+            this.btnGClient.Click += new System.EventHandler(this.btnGeEntre_Click);
             // 
-            // NomInte
+            // btnGInterimeur
             // 
-            this.NomInte.DataPropertyName = "NomInte";
-            this.NomInte.HeaderText = "NOM";
-            this.NomInte.Name = "NomInte";
-            this.NomInte.Width = 130;
+            this.btnGInterimeur.BackColor = System.Drawing.Color.White;
+            this.btnGInterimeur.Depth = 0;
+            this.btnGInterimeur.Location = new System.Drawing.Point(23, 327);
+            this.btnGInterimeur.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGInterimeur.Name = "btnGInterimeur";
+            this.btnGInterimeur.Primary = true;
+            this.btnGInterimeur.Size = new System.Drawing.Size(399, 36);
+            this.btnGInterimeur.TabIndex = 3;
+            this.btnGInterimeur.Text = "Gerer interimeur";
+            this.btnGInterimeur.UseVisualStyleBackColor = false;
+            this.btnGInterimeur.Click += new System.EventHandler(this.btnGInte_Click);
             // 
-            // PrenomInte
+            // btnGFacture
             // 
-            this.PrenomInte.DataPropertyName = "PrenomInte";
-            this.PrenomInte.HeaderText = "PRENOM";
-            this.PrenomInte.Name = "PrenomInte";
-            this.PrenomInte.Width = 130;
+            this.btnGFacture.Depth = 0;
+            this.btnGFacture.Location = new System.Drawing.Point(471, 531);
+            this.btnGFacture.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGFacture.Name = "btnGFacture";
+            this.btnGFacture.Primary = true;
+            this.btnGFacture.Size = new System.Drawing.Size(399, 36);
+            this.btnGFacture.TabIndex = 3;
+            this.btnGFacture.Text = "Gerer facture";
+            this.btnGFacture.UseVisualStyleBackColor = true;
+            this.btnGFacture.Click += new System.EventHandler(this.btnGeFact_Click);
             // 
-            // IdEntre
+            // btnGPrestation
             // 
-            this.IdEntre.DataPropertyName = "IdEntre";
-            this.IdEntre.HeaderText = "ID";
-            this.IdEntre.Name = "IdEntre";
-            this.IdEntre.Width = 140;
-            // 
-            // NomEntre
-            // 
-            this.NomEntre.DataPropertyName = "NomEntre";
-            this.NomEntre.HeaderText = "NOM";
-            this.NomEntre.Name = "NomEntre";
-            this.NomEntre.Width = 220;
+            this.btnGPrestation.Depth = 0;
+            this.btnGPrestation.Location = new System.Drawing.Point(23, 530);
+            this.btnGPrestation.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGPrestation.Name = "btnGPrestation";
+            this.btnGPrestation.Primary = true;
+            this.btnGPrestation.Size = new System.Drawing.Size(399, 36);
+            this.btnGPrestation.TabIndex = 3;
+            this.btnGPrestation.Text = "Gerer prestation";
+            this.btnGPrestation.UseVisualStyleBackColor = true;
+            this.btnGPrestation.Click += new System.EventHandler(this.btnGePresta_Click);
             // 
             // MainForm
             // 
