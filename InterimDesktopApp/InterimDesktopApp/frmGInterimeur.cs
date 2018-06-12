@@ -313,31 +313,39 @@ namespace InterimDesktopApp
                 {
                     int nId = (int)dgvInterimeur.Rows[j].Cells[0].Value;
                     C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == nId);
-                    C_t_categorie categorie = Categories.Find(x => x.nom_categ == specialite);
-                     interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
+                    //C_t_categorie categorie = Categories.Find(x => x.nom_categ == specialite);
+                     //interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
                     //MessageBox.Show(interimeur.nom_inte + categorie.nom_categ);
-                    C_t_facture facture = Factures.Find(x => x.id_inte == interimeur.id_inte);
-                    C_t_travail prestation = Prestations.Find(x => x.id_fact == facture.id_fact);
+                    C_t_facture facture = Factures.Find(x => x.id_fact == interimeur.id_inte);
+                    C_t_travail prestation = Prestations.Find(x => x.id_fact == facture.id_entre);
+                    //MessageBox.Show(facture.id_fact.ToString());
+                    //MessageBox.Show(facture.date_fact.ToString() + "(" + facture.id_fact + ")" + prestation.nom_travail + "(" + prestation.Id_travail.ToString() + ")");
+                    if (interimeur.specialisation != specialite) continue;
+                    else
+                    {
+                        //MessageBox.Show(interimeur.specialisation+" "+specialite+" "+ "=>" +prestation.date_fin.ToString("dd/MM/yyyy"));
 
-                    PdfPTable table_interimeur = new PdfPTable(2);
-                    PdfPCell nom_interimeur = new PdfPCell(new Phrase(interimeur.nom_inte, normal_font));
-                    PdfPCell details = new PdfPCell(new Phrase("Details", normal_font));
-                    PdfPCell date_libre = new PdfPCell(new Phrase("Date", normal_font));
-                    nom_interimeur.Colspan = 2;
-                    nom_interimeur.BackgroundColor = BaseColor.ORANGE;
-                    nom_interimeur.HorizontalAlignment = 1;
-                    details.HorizontalAlignment = 1;
-                    date_libre.HorizontalAlignment = 1;
-                    table_interimeur.AddCell(nom_interimeur);
-                    table_interimeur.AddCell(details);
-                    table_interimeur.AddCell(date_libre);
-                    table_interimeur.AddCell(@"Libre depuis");
-                    table_interimeur.AddCell(prestation.date_fin.ToString("dd/MM/yyyy"));
-                    doc.Add(nom_interimeur);
-                    doc.Add(table_interimeur);
-                    //Paragraph para = new Paragraph(interimeur.nom_inte + " " + interimeur.prenom_inte + " - " + prestation.date_debut.ToString("dd/MM/yyyy") + " \t " + prestation.date_fin.ToString("dd/MM/yyyy"),normal_font);
-                    //doc.Add(para);
-                    doc.Add(newLine);
+                        PdfPTable table_interimeur = new PdfPTable(2);// declaration d'un tablea a 2 col
+                        PdfPCell nom_interimeur = new PdfPCell(new Phrase(interimeur.nom_inte, normal_font));// declare un cellule nom interimeur
+                        PdfPCell details = new PdfPCell(new Phrase("Details", normal_font));//declare un cellule details
+                        PdfPCell date_libre = new PdfPCell(new Phrase("Date", normal_font));//declare une cellule  de la  date libre
+                        nom_interimeur.Colspan = 2; // merge 2 col
+                        nom_interimeur.BackgroundColor = BaseColor.ORANGE;//definir la coleur du nom de l interimeur
+                        nom_interimeur.HorizontalAlignment = 1;//horizontal alginment 0=lefte ; 1= center; 2=right
+                        details.HorizontalAlignment = 1;//h alignment
+                        date_libre.HorizontalAlignment = 1;//h alignment
+                        table_interimeur.AddCell(nom_interimeur);//creating the table cell
+                        table_interimeur.AddCell(details);//another cell
+                        table_interimeur.AddCell(date_libre);//another cell
+                        table_interimeur.AddCell(@"Libre depuis");//another cell
+                        table_interimeur.AddCell(prestation.date_fin.ToString("dd/MM/yyyy"));//another cell
+                        doc.Add(nom_interimeur);//metre en place dans le doc
+                        doc.Add(table_interimeur);//pour lr table aussin
+                        //Paragraph para = new Paragraph(interimeur.nom_inte + " " + interimeur.prenom_inte + " - " + prestation.date_debut.ToString("dd/MM/yyyy") + " \t " + prestation.date_fin.ToString("dd/MM/yyyy"),normal_font);
+                        //doc.Add(para);
+                        doc.Add(newLine);// simply adding a new line
+                    }
+                    
                 }
             }
             doc.Close();

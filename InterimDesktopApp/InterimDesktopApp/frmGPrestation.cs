@@ -80,8 +80,8 @@ namespace InterimDesktopApp
                     MessageBox.Show(@"Please fill all require information");
                 else // ajouter dans la base de donnees
                 {
-                    try
-                    {
+                    //try
+                    //{
                         //MessageBox.Show(cbCategorie.SelectedItem.ToString()+" - "+cbFacture.SelectedItem.ToString() );
                         //foreach (var f in Factures)
                         //    MessageBox.Show(f.id_fact.ToString()+" "+f.date_fact.ToString());
@@ -91,9 +91,9 @@ namespace InterimDesktopApp
                         //MessageBox.Show(facture.id_fact.ToString());
                         new G_t_travail(SChonn).Ajouter(tbNomPresta.Text, double.Parse(tbSalPresta.Text), dtpStart.Value,
                             dtpEnd.Value, categorie.id_categ, facture.id_fact);
-                    }
-                    catch (Exception ex){ MessageBox.Show(ex.Message);}
-                    finally { RemplireDgv(); }
+                    //}
+                    //catch (Exception ex){ MessageBox.Show(ex.Message);}
+                    //finally { RemplireDgv(); }
                 }
             }
            
@@ -159,7 +159,6 @@ namespace InterimDesktopApp
             else
                 MessageBox.Show(@"There is no row selected!");
         }
-
         private void btnSupprimer_Click_1(object sender, EventArgs e)
         {
             if (dgvPrestation.SelectedRows.Count > 0)

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using InterimCouClasses;
 using InterimCouGestions;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace InterimDesktopApp
 {
@@ -16,6 +19,12 @@ namespace InterimDesktopApp
         public List<C_t_travail> Prestations { get; set; }
         public DataTable DtFacture { get; set; }
         public BindingSource BsFacture { get; set; }
+        Document doc = new Document(PageSize.A4, 40, 40, 30, 25);
+        PdfWriter pw;
+        Font header_font = new Font(iTextSharp.text.Font.NORMAL, 16f, iTextSharp.text.Font.NORMAL, BaseColor.BLUE);
+        Font date_font = new Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+        Font normal_font = new Font(iTextSharp.text.Font.NORMAL, 12f, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+        Font small_font = new Font(iTextSharp.text.Font.NORMAL, 8f, iTextSharp.text.Font.NORMAL, BaseColor.RED);
         private const string SChonn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\NewInterimDB\NewInterimDB.mdf;Integrated Security=True;Connect Timeout=30";
 
         public FrmGFacture()
@@ -134,6 +143,59 @@ namespace InterimDesktopApp
             Interimeurs = new G_t_interimeur(SChonn).Lire("IdInte");
             Factures = new G_t_facture(SChonn).Lire("IdFact");
             Prestations = new G_t_travail(SChonn).Lire("IdTravail");
+        }
+
+        private void btnCA_Click(object sender, EventArgs e)
+        {
+            double salary = 0;
+            pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\CAM12mois.pdf", FileMode.OpenOrCreate));
+            doc.Open();//open for writing
+            Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
+            Paragraph logo_name = new Paragraph("Circle", small_font);
+            Paragraph date = new Paragraph("Le" + " " + DateTime.Today.ToString("dd/MM/yyyy"), date_font);
+            Paragraph title = new Paragraph(@"Les chiffres d'affaire mensuel sur 12 mois", header_font);
+            Paragraph newLine = new Paragraph("\n");
+            logo.ScalePercent(10.0f);
+            logo.Alignment = 0;// 0 = left; 1=center ; 2=right
+            logo.Alignment = 0;
+            date.Alignment = 2;
+            title.Alignment = 1;
+            doc.Add(logo);
+            doc.Add(logo_name);
+            doc.Add(date);
+            doc.Add(title);
+            doc.Add(newLine);
+            
+            for (int i = 0; i < dgvFacture.RowCount - 1; i++)
+            {
+                int nId = (int)dgvFacture.Rows[i].Cells[0].Value;
+                C_t_facture facture = Factures.Find(x => x.id_fact == nId);
+                C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == facture.id_inte);
+                C_t_travail prestation = Prestations.Find(x => x.id_fact == facture.id_entre);
+                double single_amount = prestation.prix_travail + (prestation.prix_travail * interimeur.bonus_sal / 100);
+                salary += single_amount;
+                PdfPTable table = new PdfPTable(2);// declaration d'un tablea a 2 col
+                PdfPCell base_amount = new PdfPCell(new Phrase(single_amount.ToString()));
+                PdfPCell details = new PdfPCell(new Phrase("Details", normal_font));//declare un cellule details
+                PdfPCell Amount = new PdfPCell(new Phrase("Prix", normal_font));//declare une cellule  de la  date libre
+                PdfPCell total = new PdfPCell(new Phrase("Total" + salary, normal_font));// declare un cellule nom interimeur
+                PdfPCell total_salary = new PdfPCell(new Phrase(salary.ToString()));
+                details.HorizontalAlignment = 1;//h alignment
+                Amount.HorizontalAlignment = 1;//h alignment
+                table.AddCell(details);//creating the table cell
+                table.AddCell(Amount);//another cell
+                table.AddCell(prestation.nom_travail);//putting the name in the cell
+                table.AddCell(base_amount);//putting the calculated money in
+                total.Colspan = 2; // merge 2 col
+                total.BackgroundColor = BaseColor.ORANGE;//definir la coleur du nom de l interimeur
+                total.HorizontalAlignment = 2;//horizontal alginment 0=lefte ; 1= center; 2=right
+                table.AddCell(total);
+
+                table.AddCell(total_salary);
+                doc.Add(table);//pour lr table aussin
+            }
+           
+            doc.Close();
         }
     }
 

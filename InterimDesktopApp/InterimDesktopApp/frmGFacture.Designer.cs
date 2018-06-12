@@ -239,6 +239,7 @@
             this.btnCA.TabIndex = 25;
             this.btnCA.Text = "PDF";
             this.btnCA.UseVisualStyleBackColor = true;
+            this.btnCA.Click += new System.EventHandler(this.btnCA_Click);
             // 
             // metroLabel5
             // 
