@@ -239,6 +239,7 @@
             this.btnCA.TabIndex = 25;
             this.btnCA.Text = "PDF";
             this.btnCA.UseVisualStyleBackColor = true;
+            this.btnCA.Visible = false;
             this.btnCA.Click += new System.EventHandler(this.btnCA_Click);
             // 
             // metroLabel5
@@ -249,6 +250,7 @@
             this.metroLabel5.Size = new System.Drawing.Size(46, 19);
             this.metroLabel5.TabIndex = 26;
             this.metroLabel5.Text = "CA/an";
+            this.metroLabel5.Visible = false;
             // 
             // cbEntre2
             // 

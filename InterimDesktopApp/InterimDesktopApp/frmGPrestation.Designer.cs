@@ -60,6 +60,8 @@
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.chbFacturee = new MetroFramework.Controls.MetroCheckBox();
+            this.btnCAmensuel = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestation)).BeginInit();
             this.SuspendLayout();
             // 
@@ -359,11 +361,34 @@
             this.chbFacturee.Text = "Facturee";
             this.chbFacturee.UseVisualStyleBackColor = true;
             // 
+            // btnCAmensuel
+            // 
+            this.btnCAmensuel.Depth = 0;
+            this.btnCAmensuel.Location = new System.Drawing.Point(366, 393);
+            this.btnCAmensuel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCAmensuel.Name = "btnCAmensuel";
+            this.btnCAmensuel.Primary = true;
+            this.btnCAmensuel.Size = new System.Drawing.Size(152, 33);
+            this.btnCAmensuel.TabIndex = 21;
+            this.btnCAmensuel.Text = "PDF";
+            this.btnCAmensuel.UseVisualStyleBackColor = true;
+            this.btnCAmensuel.Click += new System.EventHandler(this.btnCAmensuel_Click);
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(316, 407);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(47, 19);
+            this.metroLabel10.TabIndex = 28;
+            this.metroLabel10.Text = "CA/12:";
+            // 
             // FrmGPrestation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 539);
+            this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.cbFacture);
             this.Controls.Add(this.llbCateg);
@@ -374,6 +399,7 @@
             this.Controls.Add(this.btnConfirmer);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEditer);
+            this.Controls.Add(this.btnCAmensuel);
             this.Controls.Add(this.btnNonEnFacture);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnAjouter);
@@ -432,5 +458,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroCheckBox chbFacturee;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCAmensuel;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
     }
 }

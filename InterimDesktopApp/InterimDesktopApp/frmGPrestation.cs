@@ -235,7 +235,7 @@ namespace InterimDesktopApp
                     {
                         var nId = Convert.ToInt32(dgvPrestation.Rows[i].Cells[0].Value);
                         C_t_travail prestation = Prestations.Find(x => x.Id_travail == (int)nId);
-                        if (prestation.date_fin > DateTime.Now)
+                        if (prestation.date_fin.Date > DateTime.Now.Date)
                         {
                             C_t_categorie categorie = Categories.Find(x => x.id_categ == prestation.id_categ);
                             C_t_interimeur interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
@@ -296,7 +296,7 @@ namespace InterimDesktopApp
                         {
                             C_t_categorie categorie = Categories.Find(x => x.id_categ == prestation.id_categ);
                             C_t_interimeur interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
-                            MessageBox.Show(categorie.nom_categ + "=>" + interimeur.nom_inte);
+                            //MessageBox.Show(categorie.nom_categ + "=>" + interimeur.nom_inte);
                             amount = (float)prestation.prix_travail + (float)((prestation.prix_travail * interimeur.bonus_sal) / 100);
                             total += amount;
                             PdfPCell cell_prestation = new PdfPCell(new Phrase(prestation.nom_travail, normal_font));
@@ -314,6 +314,67 @@ namespace InterimDesktopApp
                 }
             }
             else MessageBox.Show("Vous n'avez aucune prestation");
+        }
+
+        private void btnCAmensuel_Click(object sender, EventArgs e)
+        {
+
+            float total = 0f;
+            float amount = 0f;
+            if (dgvPrestation.Rows.Count > 0)
+            {
+                Document doc = new Document(PageSize.LETTER, 40, 40, 30, 25);
+                PdfWriter pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\CAM12.pdf", FileMode.Create));
+                doc.Open();// opening the pdf to write in
+                Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
+                Paragraph logo_name = new Paragraph("Circle", small_font);
+                Paragraph date = new Paragraph("Le" + " " + DateTime.Today.ToString("dd/MM/yyyy"), date_font);
+                Paragraph title = new Paragraph("Chiffre d'affaire mensuel par 12 mois", header_font);
+                Paragraph newLine = new Paragraph("\n");
+                logo.ScalePercent(10.0f);
+                logo.Alignment = 0;// 0 = left; 1=center ; 2=right
+                logo.Alignment = 0;
+                date.Alignment = 2;
+                title.Alignment = 1;
+                doc.Add(logo);
+                doc.Add(logo_name);
+                doc.Add(date);
+                doc.Add(title);
+                doc.Add(newLine);
+                PdfPTable table_prestation = new PdfPTable(2);
+                PdfPCell title_table = new PdfPCell(new Phrase("chiffre d' affaires", normal_font));
+                title_table.Colspan = 2;
+                title_table.BackgroundColor = BaseColor.ORANGE;
+                title_table.HorizontalAlignment = 1;
+                PdfPCell col_prestation = new PdfPCell(new Phrase("Nom Prestation", normal_font));
+                PdfPCell col_Amount = new PdfPCell(new Phrase("Prix", normal_font));
+                PdfPCell description_total = new PdfPCell(new Phrase("Total"));
+                col_prestation.HorizontalAlignment = 1;
+                col_Amount.HorizontalAlignment = 1;
+                table_prestation.AddCell(title_table);
+                table_prestation.AddCell(col_prestation);
+                table_prestation.AddCell(col_Amount);
+                for (int i = 0; i < dgvPrestation.RowCount - 1; i++)
+                {
+                    var nId = Convert.ToInt32(dgvPrestation.Rows[i].Cells[0].Value);
+                    C_t_travail prestation = Prestations.Find(x => x.Id_travail == (int)nId);
+                    C_t_categorie categorie = Categories.Find(x => x.id_categ == prestation.id_categ);
+                    C_t_interimeur interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
+                    //MessageBox.Show(categorie.nom_categ + "=>" + interimeur.nom_inte);
+                    amount = (float)prestation.prix_travail + (float)((prestation.prix_travail * interimeur.bonus_sal) / 100);
+                    total += amount;
+                    PdfPCell cell_prestation = new PdfPCell(new Phrase(prestation.nom_travail, normal_font));
+                    table_prestation.AddCell(cell_prestation);
+                    table_prestation.AddCell(amount + "€");
+                }
+                doc.Add(newLine);
+                table_prestation.AddCell(description_total);
+                table_prestation.AddCell(total.ToString() + "€");
+                doc.Add(table_prestation);
+                total = 0f;
+                doc.Close(); //closing the pdf
+            }
+            else MessageBox.Show("Vous n'avez aucune prestation !");
         }
     }
 }
