@@ -42,8 +42,6 @@
             this.tbPrenom = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.cbMetier = new MetroFramework.Controls.MetroComboBox();
-            this.chbFacturee = new MetroFramework.Controls.MetroCheckBox();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.btnAjouter = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSupprimer = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnEditer = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -176,25 +174,6 @@
             this.cbMetier.Name = "cbMetier";
             this.cbMetier.Size = new System.Drawing.Size(154, 29);
             this.cbMetier.TabIndex = 3;
-            // 
-            // chbFacturee
-            // 
-            this.chbFacturee.AutoSize = true;
-            this.chbFacturee.Location = new System.Drawing.Point(395, 321);
-            this.chbFacturee.Name = "chbFacturee";
-            this.chbFacturee.Size = new System.Drawing.Size(76, 15);
-            this.chbFacturee.TabIndex = 4;
-            this.chbFacturee.Text = "Un par Un";
-            this.chbFacturee.UseVisualStyleBackColor = true;
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(346, 317);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(43, 19);
-            this.metroLabel5.TabIndex = 5;
-            this.metroLabel5.Text = "Status";
             // 
             // btnAjouter
             // 
@@ -354,8 +333,6 @@
             this.Controls.Add(this.btnEditer);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnAjouter);
-            this.Controls.Add(this.metroLabel5);
-            this.Controls.Add(this.chbFacturee);
             this.Controls.Add(this.cbEntreprise);
             this.Controls.Add(this.cbMetier);
             this.Controls.Add(this.tbPrenom);
@@ -388,8 +365,6 @@
         private MetroFramework.Controls.MetroTextBox tbPrenom;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroComboBox cbMetier;
-        private MetroFramework.Controls.MetroCheckBox chbFacturee;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
         private MaterialSkin.Controls.MaterialRaisedButton btnAjouter;
         private MaterialSkin.Controls.MaterialRaisedButton btnSupprimer;
         private MaterialSkin.Controls.MaterialRaisedButton btnEditer;

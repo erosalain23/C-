@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 using InterimCouAccess;
 using InterimCouClasses;
 using InterimCouGestions;
-
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 namespace InterimDesktopApp
 {
     public partial class FrmGPrestation : MetroFramework.Forms.MetroForm
@@ -19,7 +21,10 @@ namespace InterimDesktopApp
         public DataTable DtPrestation { get; set; }
         public BindingSource BsPrestation { get; set; }
         private  readonly NumberFormatInfo _info=new NumberFormatInfo();
-
+        Font header_font = new Font(iTextSharp.text.Font.NORMAL, 16f, iTextSharp.text.Font.NORMAL, BaseColor.BLUE);
+        Font date_font = new Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+        Font normal_font = new Font(iTextSharp.text.Font.NORMAL, 12f, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+        Font small_font = new Font(iTextSharp.text.Font.NORMAL, 8f, iTextSharp.text.Font.NORMAL, BaseColor.RED);
         private const string SChonn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\NewInterimDB\NewInterimDB.mdf;Integrated Security=True;Connect Timeout=30";
         public FrmGPrestation()
         {
@@ -185,6 +190,130 @@ namespace InterimDesktopApp
             Interimeurs = new G_t_interimeur(SChonn).Lire("IdInte");
             Factures = new G_t_facture(SChonn).Lire("IdFact");
             Prestations = new G_t_travail(SChonn).Lire("IdTravail");
+        }
+
+        private void btnNonEnFacture_Click(object sender, EventArgs e)
+        {
+            float total = 0f;
+            float amount = 0f;
+            if (dgvPrestation.Rows.Count > 0)
+            {
+                if (chbFacturee.Checked == true)
+                {
+                    Document doc = new Document(PageSize.LETTER, 40, 40, 30, 25);
+                    PdfWriter pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\prestation facturee.pdf", FileMode.Create));
+                    doc.Open();// opening the pdf to write in
+                    Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
+                    Paragraph logo_name = new Paragraph("Circle", small_font);
+                    Paragraph date = new Paragraph("Le" + " " + DateTime.Today.ToString("dd/MM/yyyy"), date_font);
+                    Paragraph title = new Paragraph("Prestation factureé", header_font);
+                    Paragraph newLine = new Paragraph("\n");
+                    logo.ScalePercent(10.0f);
+                    logo.Alignment = 0;// 0 = left; 1=center ; 2=right
+                    logo.Alignment = 0;
+                    date.Alignment = 2;
+                    title.Alignment = 1;
+                    doc.Add(logo);
+                    doc.Add(logo_name);
+                    doc.Add(date);
+                    doc.Add(title);
+                    doc.Add(newLine);
+                    PdfPTable table_prestation = new PdfPTable(2);
+                    PdfPCell title_table = new PdfPCell(new Phrase("Prestation facturée", normal_font));
+                    title_table.Colspan = 2;
+                    title_table.BackgroundColor = BaseColor.ORANGE;
+                    title_table.HorizontalAlignment = 1;
+                    PdfPCell col_prestation = new PdfPCell(new Phrase("Nom Prestation", normal_font));
+                    PdfPCell col_Amount = new PdfPCell(new Phrase("Prix", normal_font));
+                    PdfPCell description_total = new PdfPCell(new Phrase("Total"));
+                    col_prestation.HorizontalAlignment = 1;
+                    col_Amount.HorizontalAlignment = 1;
+                    table_prestation.AddCell(title_table);
+                    table_prestation.AddCell(col_prestation);
+                    table_prestation.AddCell(col_Amount);
+                    for (int i = 0; i < dgvPrestation.RowCount - 1; i++)
+                    {
+                        var nId = Convert.ToInt32(dgvPrestation.Rows[i].Cells[0].Value);
+                        C_t_travail prestation = Prestations.Find(x => x.Id_travail == (int)nId);
+                        if (prestation.date_fin > DateTime.Now)
+                        {
+                            C_t_categorie categorie = Categories.Find(x => x.id_categ == prestation.id_categ);
+                            C_t_interimeur interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
+                            //MessageBox.Show(categorie.nom_categ + "=>" + interimeur.nom_inte);
+                            amount = (float)prestation.prix_travail + (float)((prestation.prix_travail * interimeur.bonus_sal) / 100);
+                            total += amount;
+                            PdfPCell cell_prestation = new PdfPCell(new Phrase(prestation.nom_travail, normal_font));
+                            table_prestation.AddCell(cell_prestation);
+                            table_prestation.AddCell(amount + "€");
+                        }
+                        else continue;
+                    }
+                    doc.Add(newLine);
+                    table_prestation.AddCell(description_total);
+                    table_prestation.AddCell(total.ToString() + "€");
+                    doc.Add(table_prestation);
+                    total = 0f;
+                    doc.Close(); //closing the pdf
+                }
+                else
+                {
+                    Document doc = new Document(PageSize.LETTER, 40, 40, 30, 25);
+                    PdfWriter pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\prestation non facturee.pdf", FileMode.Create));
+                    doc.Open();// opening the pdf to write in
+                    Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
+                    Paragraph logo_name = new Paragraph("Circle", small_font);
+                    Paragraph date = new Paragraph("Le" + " " + DateTime.Today.ToString("dd/MM/yyyy"), date_font);
+                    Paragraph title = new Paragraph("Prestation factureé", header_font);
+                    Paragraph newLine = new Paragraph("\n");
+                    logo.ScalePercent(10.0f);
+                    logo.Alignment = 0;// 0 = left; 1=center ; 2=right
+                    logo.Alignment = 0;
+                    date.Alignment = 2;
+                    title.Alignment = 1;
+                    doc.Add(logo);
+                    doc.Add(logo_name);
+                    doc.Add(date);
+                    doc.Add(title);
+                    doc.Add(newLine);
+                    PdfPTable table_prestation = new PdfPTable(2);
+                    PdfPCell title_table = new PdfPCell(new Phrase("Prestation non facturée", normal_font));
+                    title_table.Colspan = 2;
+                    title_table.BackgroundColor = BaseColor.ORANGE;
+                    title_table.HorizontalAlignment = 1;
+                    PdfPCell col_prestation = new PdfPCell(new Phrase("Nom Prestation", normal_font));
+                    PdfPCell col_Amount = new PdfPCell(new Phrase("Prix", normal_font));
+                    PdfPCell description_total = new PdfPCell(new Phrase("Total"));
+                    col_prestation.HorizontalAlignment = 1;
+                    col_Amount.HorizontalAlignment = 1;
+                    table_prestation.AddCell(title_table);
+                    table_prestation.AddCell(col_prestation);
+                    table_prestation.AddCell(col_Amount);
+                    for (int i = 0; i < dgvPrestation.RowCount - 1; i++)
+                    {
+                        var nId = Convert.ToInt32(dgvPrestation.Rows[i].Cells[0].Value);
+                        C_t_travail prestation = Prestations.Find(x => x.Id_travail == (int)nId);
+                        if (prestation.date_fin.Date < DateTime.Now.Date)
+                        {
+                            C_t_categorie categorie = Categories.Find(x => x.id_categ == prestation.id_categ);
+                            C_t_interimeur interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
+                            //MessageBox.Show(categorie.nom_categ + "=>" + interimeur.nom_inte);
+                            amount = (float)prestation.prix_travail + (float)((prestation.prix_travail * interimeur.bonus_sal) / 100);
+                            total += amount;
+                            PdfPCell cell_prestation = new PdfPCell(new Phrase(prestation.nom_travail, normal_font));
+                            table_prestation.AddCell(cell_prestation);
+                            table_prestation.AddCell(amount + "€");
+                        }
+                        else continue;
+                    }
+                    doc.Add(newLine);
+                    table_prestation.AddCell(description_total);
+                    table_prestation.AddCell(total.ToString() + "€");
+                    doc.Add(table_prestation);
+                    total = 0f;
+                    doc.Close(); //closing the pdf
+                }
+            }
+            else MessageBox.Show("Vous n'avez aucune prestation");
         }
     }
 }

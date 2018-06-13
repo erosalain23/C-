@@ -21,8 +21,7 @@ namespace InterimDesktopApp
         public DataTable DtInterimeur { get; set; }
         public BindingSource BsInterimeur  { get; set; }
         private readonly NumberFormatInfo _info = new NumberFormatInfo();
-        Document doc = new Document(PageSize.A4, 40, 40, 30, 25);
-        PdfWriter pw;
+       
         Font header_font = new Font(iTextSharp.text.Font.NORMAL, 16f, iTextSharp.text.Font.NORMAL, BaseColor.BLUE);
         Font date_font = new Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
         Font normal_font = new Font(iTextSharp.text.Font.NORMAL, 12f, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
@@ -171,120 +170,63 @@ namespace InterimDesktopApp
         private void btnEmplDuTmp_Click(object sender, EventArgs e)
         {
             // the creation of the repport document of "emploi du temps de l'interimaire"
-            if (dgvInterimeur.Rows.Count > 0)
+            if (dgvInterimeur.Rows.Count > 0)//si il y a des trus dans le dgv
             {
-                if (chbFacturee.Checked)
+                Document doc = new Document(PageSize.LETTER, 40, 40, 30, 25);
+                PdfWriter pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\Emploid de temps des interimairs.pdf", FileMode.Create));
+                doc.Open();// opening the pdf to write in
+                Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
+                Paragraph logo_name = new Paragraph("Circle", small_font);
+                Paragraph date = new Paragraph("Le" + " " + DateTime.Today.ToString("dd/MM/yyyy"), date_font);
+                Paragraph title = new Paragraph("Emploi de temps de chaque interimaire", header_font);
+                Paragraph newLine = new Paragraph("\n");
+                logo.ScalePercent(10.0f);
+                logo.Alignment = 0;// 0 = left; 1=center ; 2=right
+                logo.Alignment = 0;
+                date.Alignment = 2;
+                title.Alignment = 1;
+                doc.Add(logo);
+                doc.Add(logo_name);
+                doc.Add(date);
+                doc.Add(title);
+                doc.Add(newLine);
+                for (int i = 0; i < dgvInterimeur.RowCount-1; i++)
                 {
-                    var nId = dgvInterimeur.SelectedRows[0].Cells["IdInte"].Value;
+                    var nId = Convert.ToInt32(dgvInterimeur.Rows[i].Cells[0].Value);
                     C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == (int)nId);
-                    C_t_facture facture = Factures.Find(x => x.id_inte == (int)nId);
-                    C_t_travail prestation = Prestations.Find(x => x.id_fact == facture.id_fact);
-                    //foreach (var p in Prestations)
-                    //    MessageBox.Show(p.id_fact + "->" + facture.id_fact);
-                    //foreach (var f in Factures)
-                    //    MessageBox.Show(f.id_fact + "->" + f.date_fact.ToString("dd/MM/yyyy"));
-                    //MessageBox.Show(facture.id_fact.ToString());
-                    try
-                    {
-                        pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\" + interimeur.nom_inte + ".pdf", FileMode.OpenOrCreate));
-                        doc.Open();// opening the pdf to write in
-                        Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
-                        Paragraph logo_name = new Paragraph("Circle", small_font);
-                        Paragraph date = new Paragraph("Le" + " " + DateTime.Today.ToString("dd/MM/yyyy"), date_font);
-                        Paragraph title = new Paragraph(@"Emploi de temps de  l' interimaires", header_font);
-                        Paragraph newLine = new Paragraph("\n");
-                        logo.ScalePercent(10.0f);
-                        logo.Alignment = 0;// 0 = left; 1=center ; 2=right
-                        logo.Alignment = 0;
-                        date.Alignment = 2;
-                        title.Alignment = 1;
-                        doc.Add(logo);
-                        doc.Add(logo_name);
-                        doc.Add(date);
-                        doc.Add(title);
-                        doc.Add(newLine);
-
-                        PdfPTable table_interimeur = new PdfPTable(2);
-                        PdfPCell nom_interimeur = new PdfPCell(new Phrase(interimeur.nom_inte, normal_font));
-                        PdfPCell col_date_debut = new PdfPCell(new Phrase("Debut", normal_font));
-                        PdfPCell col_date_fin = new PdfPCell(new Phrase("Fin", normal_font));
-                        nom_interimeur.Colspan = 2;
-                        nom_interimeur.BackgroundColor = BaseColor.ORANGE;
-                        nom_interimeur.HorizontalAlignment = 1;
-                        col_date_debut.HorizontalAlignment = 1;
-                        col_date_fin.HorizontalAlignment = 1;
-                        table_interimeur.AddCell(nom_interimeur);
-                        table_interimeur.AddCell(col_date_debut);
-                        table_interimeur.AddCell(col_date_fin);
-                        table_interimeur.AddCell(prestation.date_debut.ToString("dd/MM/yyyy"));
-                        table_interimeur.AddCell(prestation.date_fin.ToString("dd/MM/yyyy"));
-                        doc.Add(nom_interimeur);
-                        doc.Add(table_interimeur);
-                        doc.Close();
-
-                    }
-                    catch (Exception ex) { MessageBox.Show(ex.Message + ex.Source); }
+                    C_t_categorie categorie = Categories.Find(x => x.nom_categ == interimeur.specialisation);
+                    C_t_travail prestation = Prestations.Find(x => x.id_categ == categorie.id_categ);
+                    //MessageBox.Show(categorie.nom_categ + "=>" + prestation.nom_travail);
+                    PdfPTable table_interimeur = new PdfPTable(2);
+                    PdfPCell nom_interimeur = new PdfPCell(new Phrase(interimeur.nom_inte, normal_font));
+                    PdfPCell col_date_debut = new PdfPCell(new Phrase("Debut", normal_font));
+                    PdfPCell col_date_fin = new PdfPCell(new Phrase("Fin", normal_font));
+                    nom_interimeur.Colspan = 2;
+                    nom_interimeur.BackgroundColor = BaseColor.ORANGE;
+                    nom_interimeur.HorizontalAlignment = 1;
+                    col_date_debut.HorizontalAlignment = 1;
+                    col_date_fin.HorizontalAlignment = 1;
+                    table_interimeur.AddCell(nom_interimeur);
+                    table_interimeur.AddCell(col_date_debut);
+                    table_interimeur.AddCell(col_date_fin);
+                    table_interimeur.AddCell(prestation.date_debut.ToString("dd/MM/yyyy"));
+                    table_interimeur.AddCell(prestation.date_fin.ToString("dd/MM/yyyy"));
+                    //table_interimeur.AddCell(interimeur.nom_inte);
+                    //table_interimeur.AddCell("nothing");
+                    doc.Add(table_interimeur);
+                    doc.Add(newLine);
                 }
-                else
-                {
-                    try
-                    {
-                        pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\Emploid de temps des interimairs.pdf", FileMode.OpenOrCreate));
-                        doc.Open();//open for writing
-                        Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
-                        Paragraph logo_name = new Paragraph("Circle", small_font);
-                        Paragraph date = new Paragraph("Le" + " " + DateTime.Today.ToString("dd/MM/yyyy"), date_font);
-                        Paragraph title = new Paragraph("Emploi de temps de chaque interimaire", header_font);
-                        Paragraph newLine = new Paragraph("\n");
-                        logo.ScalePercent(10.0f);
-                        logo.Alignment = 0;// 0 = left; 1=center ; 2=right
-                        logo.Alignment = 0;
-                        date.Alignment = 2;
-                        title.Alignment = 1;
-                        doc.Add(logo);
-                        doc.Add(logo_name);
-                        doc.Add(date);
-                        doc.Add(title);
-                        doc.Add(newLine);
-                        for (int i = 0; i < dgvInterimeur.RowCount - 1; i++)
-                        {
-                            int nId = Convert.ToInt32(dgvInterimeur.Rows[i].Cells[0].Value);
-                            //MessageBox.Show(nId.ToString());
-                            C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == nId);
-                            C_t_facture facture = Factures.Find(x => x.id_inte == interimeur.id_inte);
-                            C_t_travail prestation = Prestations.Find(x => x.id_fact == facture.id_fact);
-                            PdfPTable table_interimeur = new PdfPTable(2);
-                            PdfPCell nom_interimeur = new PdfPCell(new Phrase(interimeur.nom_inte,normal_font));
-                            PdfPCell col_date_debut = new PdfPCell(new Phrase("Debut",normal_font));
-                            PdfPCell col_date_fin = new PdfPCell(new Phrase("Fin",normal_font));
-                            nom_interimeur.Colspan = 2;
-                            nom_interimeur.BackgroundColor = BaseColor.ORANGE;
-                            nom_interimeur.HorizontalAlignment = 1;
-                            col_date_debut.HorizontalAlignment = 1;
-                            col_date_fin.HorizontalAlignment = 1;
-                            table_interimeur.AddCell(nom_interimeur);
-                            table_interimeur.AddCell(col_date_debut);
-                            table_interimeur.AddCell(col_date_fin);
-                            table_interimeur.AddCell(prestation.date_debut.ToString("dd/MM/yyyy"));
-                            table_interimeur.AddCell(prestation.date_fin.ToString("dd/MM/yyyy"));
-                            doc.Add(nom_interimeur);
-                            doc.Add(table_interimeur);
-                            //Paragraph para = new Paragraph(interimeur.nom_inte + " " + interimeur.prenom_inte + " - " + prestation.date_debut.ToString("dd/MM/yyyy") + " \t " + prestation.date_fin.ToString("dd/MM/yyyy"),normal_font);
-                            //doc.Add(para);
-                            doc.Add(newLine);
-                        }
-                    }
-                    catch (Exception ex) { MessageBox.Show(ex.Message + ex.Source); }
-                    finally { doc.Close(); }//closing the pdf
-                }
+                doc.Close(); //closing the pdf
             }
             else
-                MessageBox.Show(@"Vous n'aves pas d'interimaire");
+                MessageBox.Show(@"Vous n'aves pas d'interimaire dans vorte base de donneés");
         }
         private void btnMomntLbr_Click(object sender, EventArgs e)
         {
+            Document doc = new Document(PageSize.LETTER, 40, 40, 30, 25);
+            doc.Open();
             //the creation of the repport concerning " les moments libre de l'interimaire"
-            pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\moments libres des interimaires.pdf", FileMode.OpenOrCreate));
+            PdfWriter pw = PdfWriter.GetInstance(doc, new FileStream(@"E:\C#\InterimDesktopApp\Doc\moments libres des interimaires.pdf", FileMode.Create));
             doc.Open();//open for writing
             Image logo = Image.GetInstance(@"E:\C#\InterimDesktopApp\Images\circle.png");
             Paragraph logo_name = new Paragraph("Circle", small_font);
@@ -304,48 +246,45 @@ namespace InterimDesktopApp
             for (int i = 0; i < dgvInterimeur.RowCount - 1; i++)
             {
                 string specialite = (string)dgvInterimeur.Rows[i].Cells[3].Value;
-                //MessageBox.Show(nId.ToString());
                 Paragraph nom_specialite = new Paragraph(specialite,header_font);
                 nom_specialite.Alignment = 1;
                 doc.Add(nom_specialite);
                 doc.Add(newLine);
                 for (int j = 0; j < dgvInterimeur.RowCount - 1; j++)
                 {
-                    int nId = (int)dgvInterimeur.Rows[j].Cells[0].Value;
-                    C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == nId);
-                    //C_t_categorie categorie = Categories.Find(x => x.nom_categ == specialite);
-                     //interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
-                    //MessageBox.Show(interimeur.nom_inte + categorie.nom_categ);
-                    C_t_facture facture = Factures.Find(x => x.id_fact == interimeur.id_inte);
-                    C_t_travail prestation = Prestations.Find(x => x.id_fact == facture.id_entre);
-                    //MessageBox.Show(facture.id_fact.ToString());
-                    //MessageBox.Show(facture.date_fact.ToString() + "(" + facture.id_fact + ")" + prestation.nom_travail + "(" + prestation.Id_travail.ToString() + ")");
-                    if (interimeur.specialisation != specialite) continue;
-                    else
+                    var nId = Convert.ToInt32(dgvInterimeur.Rows[j].Cells[0].Value);
+                    C_t_interimeur interimeur = Interimeurs.Find(x => x.id_inte == (int)nId);
+                    if (interimeur.specialisation == specialite)
                     {
+                        C_t_categorie categorie = Categories.Find(x => x.nom_categ == interimeur.specialisation);
+                        C_t_travail prestation = Prestations.Find(x => x.id_categ == categorie.id_categ);
+                        //MessageBox.Show(categorie.nom_categ + "=>" + prestation.nom_travail);
+                        //if (interimeur.specialisation != specialite) continue;
+                        //else
+                        //{
                         //MessageBox.Show(interimeur.specialisation+" "+specialite+" "+ "=>" +prestation.date_fin.ToString("dd/MM/yyyy"));
 
-                        PdfPTable table_interimeur = new PdfPTable(2);// declaration d'un tablea a 2 col
-                        PdfPCell nom_interimeur = new PdfPCell(new Phrase(interimeur.nom_inte, normal_font));// declare un cellule nom interimeur
-                        PdfPCell details = new PdfPCell(new Phrase("Details", normal_font));//declare un cellule details
-                        PdfPCell date_libre = new PdfPCell(new Phrase("Date", normal_font));//declare une cellule  de la  date libre
-                        nom_interimeur.Colspan = 2; // merge 2 col
-                        nom_interimeur.BackgroundColor = BaseColor.ORANGE;//definir la coleur du nom de l interimeur
-                        nom_interimeur.HorizontalAlignment = 1;//horizontal alginment 0=lefte ; 1= center; 2=right
-                        details.HorizontalAlignment = 1;//h alignment
-                        date_libre.HorizontalAlignment = 1;//h alignment
-                        table_interimeur.AddCell(nom_interimeur);//creating the table cell
-                        table_interimeur.AddCell(details);//another cell
-                        table_interimeur.AddCell(date_libre);//another cell
-                        table_interimeur.AddCell(@"Libre depuis");//another cell
-                        table_interimeur.AddCell(prestation.date_fin.ToString("dd/MM/yyyy"));//another cell
-                        doc.Add(nom_interimeur);//metre en place dans le doc
-                        doc.Add(table_interimeur);//pour lr table aussin
-                        //Paragraph para = new Paragraph(interimeur.nom_inte + " " + interimeur.prenom_inte + " - " + prestation.date_debut.ToString("dd/MM/yyyy") + " \t " + prestation.date_fin.ToString("dd/MM/yyyy"),normal_font);
-                        //doc.Add(para);
+                        PdfPTable table_interimeur = new PdfPTable(2);
+                        PdfPCell nom_interimeur = new PdfPCell(new Phrase(interimeur.nom_inte, normal_font));
+                        PdfPCell col_date_debut = new PdfPCell(new Phrase("Debut", normal_font));
+                        PdfPCell col_date_fin = new PdfPCell(new Phrase("Fin", normal_font));
+                        nom_interimeur.Colspan = 2;
+                        nom_interimeur.BackgroundColor = BaseColor.ORANGE;
+                        nom_interimeur.HorizontalAlignment = 1;
+                        col_date_debut.HorizontalAlignment = 1;
+                        col_date_fin.HorizontalAlignment = 1;
+                        table_interimeur.AddCell(nom_interimeur);
+                        table_interimeur.AddCell(col_date_debut);
+                        table_interimeur.AddCell(col_date_fin);
+                        table_interimeur.AddCell("Libre depuis");
+                        table_interimeur.AddCell(prestation.date_fin.ToString("dd/MM/yyyy"));
+                        //table_interimeur.AddCell(interimeur.nom_inte);
+                        //table_interimeur.AddCell("nothing");
+                        doc.Add(table_interimeur);
                         doc.Add(newLine);// simply adding a new line
+                                         //}
                     }
-                    
+                    else continue;
                 }
             }
             doc.Close();

@@ -33,8 +33,6 @@
             this.btnEditer = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSupprimer = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnAjouter = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.cbFacturee = new MetroFramework.Controls.MetroCheckBox();
             this.tbSalPresta = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.tbNomPresta = new MetroFramework.Controls.MetroTextBox();
@@ -58,8 +56,10 @@
             this.cbCategorie = new MetroFramework.Controls.MetroComboBox();
             this.llbCateg = new MetroFramework.Controls.MetroLink();
             this.cbFacture = new System.Windows.Forms.ComboBox();
-            this.btnNonEncFct = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnNonEnFacture = new MaterialSkin.Controls.MaterialRaisedButton();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.chbFacturee = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestation)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,25 +127,6 @@
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click_1);
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(366, 323);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(43, 19);
-            this.metroLabel5.TabIndex = 17;
-            this.metroLabel5.Text = "Status";
-            // 
-            // cbFacturee
-            // 
-            this.cbFacturee.AutoSize = true;
-            this.cbFacturee.Location = new System.Drawing.Point(415, 327);
-            this.cbFacturee.Name = "cbFacturee";
-            this.cbFacturee.Size = new System.Drawing.Size(68, 15);
-            this.cbFacturee.TabIndex = 16;
-            this.cbFacturee.Text = "Facturee";
-            this.cbFacturee.UseVisualStyleBackColor = true;
             // 
             // tbSalPresta
             // 
@@ -337,18 +318,18 @@
             this.cbFacture.Size = new System.Drawing.Size(200, 21);
             this.cbFacture.TabIndex = 27;
             // 
-            // btnNonEncFct
+            // btnNonEnFacture
             // 
-            this.btnNonEncFct.Depth = 0;
-            this.btnNonEncFct.Location = new System.Drawing.Point(366, 432);
-            this.btnNonEncFct.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnNonEncFct.Name = "btnNonEncFct";
-            this.btnNonEncFct.Primary = true;
-            this.btnNonEncFct.Size = new System.Drawing.Size(152, 33);
-            this.btnNonEncFct.TabIndex = 21;
-            this.btnNonEncFct.Text = "PDF";
-            this.btnNonEncFct.UseVisualStyleBackColor = true;
-            this.btnNonEncFct.Click += new System.EventHandler(this.btnSupprimer_Click_1);
+            this.btnNonEnFacture.Depth = 0;
+            this.btnNonEnFacture.Location = new System.Drawing.Point(366, 432);
+            this.btnNonEnFacture.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNonEnFacture.Name = "btnNonEnFacture";
+            this.btnNonEnFacture.Primary = true;
+            this.btnNonEnFacture.Size = new System.Drawing.Size(152, 33);
+            this.btnNonEnFacture.TabIndex = 21;
+            this.btnNonEnFacture.Text = "PDF";
+            this.btnNonEnFacture.UseVisualStyleBackColor = true;
+            this.btnNonEnFacture.Click += new System.EventHandler(this.btnNonEnFacture_Click);
             // 
             // metroLabel9
             // 
@@ -358,6 +339,25 @@
             this.metroLabel9.Size = new System.Drawing.Size(258, 19);
             this.metroLabel9.TabIndex = 28;
             this.metroLabel9.Text = "Facture des prestation non encore facturee";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(366, 323);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(43, 19);
+            this.metroLabel5.TabIndex = 17;
+            this.metroLabel5.Text = "Status";
+            // 
+            // chbFacturee
+            // 
+            this.chbFacturee.AutoSize = true;
+            this.chbFacturee.Location = new System.Drawing.Point(415, 327);
+            this.chbFacturee.Name = "chbFacturee";
+            this.chbFacturee.Size = new System.Drawing.Size(68, 15);
+            this.chbFacturee.TabIndex = 16;
+            this.chbFacturee.Text = "Facturee";
+            this.chbFacturee.UseVisualStyleBackColor = true;
             // 
             // FrmGPrestation
             // 
@@ -374,11 +374,11 @@
             this.Controls.Add(this.btnConfirmer);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEditer);
-            this.Controls.Add(this.btnNonEncFct);
+            this.Controls.Add(this.btnNonEnFacture);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.metroLabel5);
-            this.Controls.Add(this.cbFacturee);
+            this.Controls.Add(this.chbFacturee);
             this.Controls.Add(this.cbCategorie);
             this.Controls.Add(this.tbSalPresta);
             this.Controls.Add(this.metroLabel3);
@@ -405,8 +405,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnEditer;
         private MaterialSkin.Controls.MaterialRaisedButton btnSupprimer;
         private MaterialSkin.Controls.MaterialRaisedButton btnAjouter;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroCheckBox cbFacturee;
         private MetroFramework.Controls.MetroTextBox tbSalPresta;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroTextBox tbNomPresta;
@@ -430,7 +428,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCateg;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFact;
         private System.Windows.Forms.ComboBox cbFacture;
-        private MaterialSkin.Controls.MaterialRaisedButton btnNonEncFct;
+        private MaterialSkin.Controls.MaterialRaisedButton btnNonEnFacture;
         private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroCheckBox chbFacturee;
     }
 }
