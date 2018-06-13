@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnRefresh = new MetroFramework.Controls.MetroTile();
             this.btnGePresta = new MetroFramework.Controls.MetroTile();
             this.btnGInte = new MetroFramework.Controls.MetroTile();
@@ -61,45 +62,65 @@
             // 
             this.btnRefresh.Location = new System.Drawing.Point(23, 74);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 62);
+            this.btnRefresh.Size = new System.Drawing.Size(98, 77);
             this.btnRefresh.TabIndex = 0;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TileImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.TileImage")));
+            this.btnRefresh.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnRefresh.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnRefresh.UseTileImage = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnGePresta
             // 
-            this.btnGePresta.Location = new System.Drawing.Point(266, 74);
+            this.btnGePresta.Location = new System.Drawing.Point(337, 74);
             this.btnGePresta.Name = "btnGePresta";
-            this.btnGePresta.Size = new System.Drawing.Size(75, 62);
+            this.btnGePresta.Size = new System.Drawing.Size(98, 77);
             this.btnGePresta.TabIndex = 0;
             this.btnGePresta.Text = "Add P";
+            this.btnGePresta.TileImage = ((System.Drawing.Image)(resources.GetObject("btnGePresta.TileImage")));
+            this.btnGePresta.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGePresta.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnGePresta.UseTileImage = true;
             this.btnGePresta.Click += new System.EventHandler(this.btnGePresta_Click);
             // 
             // btnGInte
             // 
-            this.btnGInte.Location = new System.Drawing.Point(104, 74);
+            this.btnGInte.Location = new System.Drawing.Point(127, 74);
             this.btnGInte.Name = "btnGInte";
-            this.btnGInte.Size = new System.Drawing.Size(75, 62);
+            this.btnGInte.Size = new System.Drawing.Size(98, 77);
             this.btnGInte.TabIndex = 0;
             this.btnGInte.Text = "Add I";
+            this.btnGInte.TileImage = ((System.Drawing.Image)(resources.GetObject("btnGInte.TileImage")));
+            this.btnGInte.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGInte.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnGInte.UseTileImage = true;
             this.btnGInte.Click += new System.EventHandler(this.btnGInte_Click);
             // 
             // btnGeEntre
             // 
-            this.btnGeEntre.Location = new System.Drawing.Point(185, 74);
+            this.btnGeEntre.Location = new System.Drawing.Point(232, 74);
             this.btnGeEntre.Name = "btnGeEntre";
-            this.btnGeEntre.Size = new System.Drawing.Size(75, 62);
+            this.btnGeEntre.Size = new System.Drawing.Size(98, 77);
             this.btnGeEntre.TabIndex = 0;
             this.btnGeEntre.Text = "Add C";
+            this.btnGeEntre.TileImage = ((System.Drawing.Image)(resources.GetObject("btnGeEntre.TileImage")));
+            this.btnGeEntre.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGeEntre.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnGeEntre.UseTileImage = true;
             this.btnGeEntre.Click += new System.EventHandler(this.btnGeEntre_Click);
             // 
             // btnGeFact
             // 
-            this.btnGeFact.Location = new System.Drawing.Point(347, 74);
+            this.btnGeFact.Location = new System.Drawing.Point(442, 74);
             this.btnGeFact.Name = "btnGeFact";
-            this.btnGeFact.Size = new System.Drawing.Size(75, 62);
+            this.btnGeFact.Size = new System.Drawing.Size(98, 77);
             this.btnGeFact.TabIndex = 0;
             this.btnGeFact.Text = "Print";
+            this.btnGeFact.TileImage = ((System.Drawing.Image)(resources.GetObject("btnGeFact.TileImage")));
+            this.btnGeFact.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGeFact.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnGeFact.UseTileImage = true;
             this.btnGeFact.Click += new System.EventHandler(this.btnGeFact_Click);
             // 
             // dgvInterimeur

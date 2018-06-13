@@ -296,7 +296,7 @@ namespace InterimDesktopApp
                         {
                             C_t_categorie categorie = Categories.Find(x => x.id_categ == prestation.id_categ);
                             C_t_interimeur interimeur = Interimeurs.Find(x => x.specialisation == categorie.nom_categ);
-                            //MessageBox.Show(categorie.nom_categ + "=>" + interimeur.nom_inte);
+                            MessageBox.Show(categorie.nom_categ + "=>" + interimeur.nom_inte);
                             amount = (float)prestation.prix_travail + (float)((prestation.prix_travail * interimeur.bonus_sal) / 100);
                             total += amount;
                             PdfPCell cell_prestation = new PdfPCell(new Phrase(prestation.nom_travail, normal_font));
