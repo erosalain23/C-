@@ -1,6 +1,6 @@
-Icons : YMJALPbtOXSUABQHWYNZXmFIeTZLQeSHVGNKcROIBCWtdTDMEmGRdUEbDcCPKJFV
-Black cards : 
-Red cards : 
+Icons : IbJDecWDBLUACQZTJMIENbLSmcdSYVHOXKWHmUtQtPMTGOBdCVRFYKGNRZAEeFPX
+Black cards : 3,59
+Red cards : 2,12,29,57
 Player : True
-Player One Points : 0
-Player Two Points : 0
+Player One Points : 1
+Player Two Points : 2

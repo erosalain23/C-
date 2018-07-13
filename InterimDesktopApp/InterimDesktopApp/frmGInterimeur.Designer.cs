@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvInterimeur = new System.Windows.Forms.DataGridView();
-            this.IdInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrenomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdSpecialisation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BonusSal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.tbId = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -54,7 +49,13 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.cbEntreprise = new MetroFramework.Controls.MetroComboBox();
+            this.dtpNaissance = new System.Windows.Forms.DateTimePicker();
+            this.IdInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date_naissance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrenomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdSpecialisation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BonusSal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInterimeur)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             this.dgvInterimeur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInterimeur.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdInte,
+            this.date_naissance,
             this.NomInte,
             this.PrenomInte,
             this.IdSpecialisation,
@@ -72,39 +74,6 @@
             this.dgvInterimeur.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvInterimeur.Size = new System.Drawing.Size(797, 222);
             this.dgvInterimeur.TabIndex = 0;
-            // 
-            // IdInte
-            // 
-            this.IdInte.DataPropertyName = "IdInte";
-            this.IdInte.HeaderText = "ID";
-            this.IdInte.Name = "IdInte";
-            // 
-            // NomInte
-            // 
-            this.NomInte.DataPropertyName = "NomInte";
-            this.NomInte.HeaderText = "NOM";
-            this.NomInte.Name = "NomInte";
-            this.NomInte.Width = 180;
-            // 
-            // PrenomInte
-            // 
-            this.PrenomInte.DataPropertyName = "PrenomInte";
-            this.PrenomInte.HeaderText = "PRENOM";
-            this.PrenomInte.Name = "PrenomInte";
-            this.PrenomInte.Width = 180;
-            // 
-            // IdSpecialisation
-            // 
-            this.IdSpecialisation.DataPropertyName = "IdSpec";
-            this.IdSpecialisation.HeaderText = "Metier";
-            this.IdSpecialisation.Name = "IdSpecialisation";
-            this.IdSpecialisation.Width = 200;
-            // 
-            // BonusSal
-            // 
-            this.BonusSal.DataPropertyName = "BonusSal";
-            this.BonusSal.HeaderText = "BONUS";
-            this.BonusSal.Name = "BonusSal";
             // 
             // metroLabel1
             // 
@@ -306,24 +275,62 @@
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.Location = new System.Drawing.Point(23, 459);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel8.Size = new System.Drawing.Size(113, 19);
             this.metroLabel8.TabIndex = 1;
-            this.metroLabel8.Text = "Entreprise:";
+            this.metroLabel8.Text = "Date de naissance";
             // 
-            // cbEntreprise
+            // dtpNaissance
             // 
-            this.cbEntreprise.FormattingEnabled = true;
-            this.cbEntreprise.ItemHeight = 23;
-            this.cbEntreprise.Location = new System.Drawing.Point(127, 449);
-            this.cbEntreprise.Name = "cbEntreprise";
-            this.cbEntreprise.Size = new System.Drawing.Size(154, 29);
-            this.cbEntreprise.TabIndex = 3;
+            this.dtpNaissance.Location = new System.Drawing.Point(142, 458);
+            this.dtpNaissance.Name = "dtpNaissance";
+            this.dtpNaissance.Size = new System.Drawing.Size(200, 20);
+            this.dtpNaissance.TabIndex = 10;
+            // 
+            // IdInte
+            // 
+            this.IdInte.DataPropertyName = "IdInte";
+            this.IdInte.HeaderText = "ID";
+            this.IdInte.Name = "IdInte";
+            // 
+            // date_naissance
+            // 
+            this.date_naissance.DataPropertyName = "date_naissance";
+            this.date_naissance.HeaderText = "DATE DE NAISSANCE";
+            this.date_naissance.Name = "date_naissance";
+            // 
+            // NomInte
+            // 
+            this.NomInte.DataPropertyName = "NomInte";
+            this.NomInte.HeaderText = "NOM";
+            this.NomInte.Name = "NomInte";
+            this.NomInte.Width = 180;
+            // 
+            // PrenomInte
+            // 
+            this.PrenomInte.DataPropertyName = "PrenomInte";
+            this.PrenomInte.HeaderText = "PRENOM";
+            this.PrenomInte.Name = "PrenomInte";
+            this.PrenomInte.Width = 180;
+            // 
+            // IdSpecialisation
+            // 
+            this.IdSpecialisation.DataPropertyName = "IdSpec";
+            this.IdSpecialisation.HeaderText = "Metier";
+            this.IdSpecialisation.Name = "IdSpecialisation";
+            this.IdSpecialisation.Width = 200;
+            // 
+            // BonusSal
+            // 
+            this.BonusSal.DataPropertyName = "BonusSal";
+            this.BonusSal.HeaderText = "BONUS";
+            this.BonusSal.Name = "BonusSal";
             // 
             // btnEmpDuTemps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 573);
+            this.Controls.Add(this.dtpNaissance);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.btnMomntLbr);
@@ -333,7 +340,6 @@
             this.Controls.Add(this.btnEditer);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnAjouter);
-            this.Controls.Add(this.cbEntreprise);
             this.Controls.Add(this.cbMetier);
             this.Controls.Add(this.tbPrenom);
             this.Controls.Add(this.metroLabel3);
@@ -370,11 +376,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnEditer;
         private MaterialSkin.Controls.MaterialRaisedButton btnAnnuler;
         private MaterialSkin.Controls.MaterialRaisedButton btnConfirmer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdInte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomInte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrenomInte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdSpecialisation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BonusSal;
         private MetroFramework.Controls.MetroLabel lbBonus;
         private MetroFramework.Controls.MetroTextBox tbBonus;
         private MaterialSkin.Controls.MaterialRaisedButton btnEmplDuTmp;
@@ -382,6 +383,12 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroComboBox cbEntreprise;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdInte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date_naissance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomInte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrenomInte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdSpecialisation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BonusSal;
+        private System.Windows.Forms.DateTimePicker dtpNaissance;
     }
 }

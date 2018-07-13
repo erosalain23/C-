@@ -15,12 +15,10 @@ namespace Memory_Game
     {
         public string player1Name { get; set; }
         public string player2Name { get; set; }
-
         public frmInputNames()
         {
             InitializeComponent();
         }
-
         private void btnGo_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -34,5 +32,6 @@ namespace Memory_Game
             }
             else MessageBox.Show("Enter all players names"); 
         }
+       
     }
 }

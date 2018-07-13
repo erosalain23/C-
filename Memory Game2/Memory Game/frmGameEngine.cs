@@ -104,7 +104,7 @@ namespace Memory_Game
                 }
                 else
                 {
-                    secondClicked = clickedLabel;//storing in the clicked icon
+                    secondClicked = clickedLabel; //storing in the clicked icon
                     secondClicked.ForeColor = Color.Black;
                     GameOver = IsGameOver();
                     if (GameOver)
@@ -126,8 +126,10 @@ namespace Memory_Game
                     pointsPlayerOne += 1;
                 }
                 else
+                {
                     timer1.Start();//starting the timer if they did not latch
-                playerOne = !playerOne;// shifting the players
+                    playerOne = !playerOne;// shifting the players
+                }
             }
             //when its not the player one
             else
@@ -162,11 +164,11 @@ namespace Memory_Game
                     pointsPlayerTwo += 1;
                 }
                 else
+                {
                     timer1.Start();//starting the timer if they did not latch
-                playerOne = !playerOne;
+                    playerOne = !playerOne;
+                }
             }
-
-
         }
         #endregion
         #region timer
@@ -501,5 +503,21 @@ namespace Memory_Game
             this.Close();
         }
         #endregion
+        private Label fingCorrespondingImage(string clickedIcon,Label SecondClickedIcon)
+        {
+            Label label;
+            for (int i=0;i<tableLayoutPanel1.Controls.Count;i++)
+            {
+                if (tableLayoutPanel1.Controls[i] is Label)
+                    label = (Label)tableLayoutPanel1.Controls[i];
+                else continue;
+                if (label.Text == clickedIcon)
+                {
+                    secondClicked = label;
+                    secondClicked.ForeColor = Color.Black;
+                }
+            }
+            return secondClicked;
+        }
     }
 }

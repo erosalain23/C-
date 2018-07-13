@@ -4,10 +4,11 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
-using InterimCouClasses;
-using InterimCouGestions;
+using InterimCouClasse;
+using InterimCouGestion;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using System.Data.SqlClient;
 
 namespace InterimDesktopApp
 {
@@ -47,8 +48,8 @@ namespace InterimDesktopApp
         {
             btnAjouter.Enabled = btnEditer.Enabled = btnSupprimer.Enabled = b;
             btnAnnuler.Enabled = btnConfirmer.Enabled = !b;
-            tbNom.Enabled = tbPrenom.Enabled = cbMetier.Enabled = tbBonus.Enabled = cbEntreprise.Enabled = !b;
-            dgvInterimeur.Enabled = b;
+            tbNom.Enabled = tbPrenom.Enabled = cbMetier.Enabled = tbBonus.Enabled = !b;
+            dgvInterimeur.Enabled = !b;
             if (b)
                 dgvInterimeur.Focus();
             else
@@ -63,13 +64,13 @@ namespace InterimDesktopApp
             DtInterimeur.Columns.Add("PrenomInte");
             DtInterimeur.Columns.Add("IdSpec");
             DtInterimeur.Columns.Add("BonusSal");
+            DtInterimeur.Columns.Add("date_naissance");
             List<C_t_interimeur> interimeurs = new G_t_interimeur(SChonn).Lire("Nom");
             foreach (C_t_interimeur interimeur in interimeurs)
-                DtInterimeur.Rows.Add(interimeur.id_inte, interimeur.nom_inte, interimeur.prenom_inte,interimeur.specialisation,string.Format("{0:P1}", interimeur.bonus_sal/100) );
+                DtInterimeur.Rows.Add(interimeur.id_inte, interimeur.nom_inte, interimeur.prenom_inte,interimeur.specialisation,string.Format("{0:P1}", interimeur.bonus_sal/100),interimeur.date_naissance.ToString("dd/MM/yyyy") );
             BsInterimeur = new BindingSource {DataSource = DtInterimeur};
             dgvInterimeur.DataSource = BsInterimeur;
         }
-
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbId.Text)) // id must be empty
@@ -79,22 +80,36 @@ namespace InterimDesktopApp
                     MessageBox.Show(@"Please fill all require information");
                 else // creation 
                 {
-                    var nId = new G_t_interimeur(SChonn).Ajouter(tbNom.Text, tbPrenom.Text,
-                        Convert.ToString(cbMetier.SelectedItem), Convert.ToDouble(tbBonus.Text));
-                    DtInterimeur.Rows.Add(nId, tbNom, tbPrenom, cbMetier.SelectedItem, tbBonus);
-                    C_t_entreprise entreprise = Entreprises.Find(x => x.nom_entre == cbEntreprise.Text);
+                    //string query = "INSERT INTO dbo.t_interimeur (nom_inte,prenom_inte,specialisation,bonus_sal,date_naissance) VALUES(@nom_inte,@prenom_inte,@specialisation,@bonus_sal,@date_naissance);";
+                    //using (SqlConnection con = new SqlConnection(SChonn))
+                    //using (SqlCommand cmd = new SqlCommand(query, con))
+                    //{
+                    //    cmd.Parameters.Add("@nom_inte", SqlDbType.Text).Value = tbNom.Text.ToString();
+                    //    cmd.Parameters.Add("@prenom_inte", SqlDbType.Text).Value = tbPrenom.Text.ToString();
+                    //    cmd.Parameters.Add("@specialisation", SqlDbType.Text).Value = cbMetier.SelectedItem;
+                    //    cmd.Parameters.Add("@bonus_sal", SqlDbType.Int).Value = Convert.ToInt32( tbBonus.Text);
+                    //    cmd.Parameters.Add("@date_naissance", SqlDbType.Date).Value = dtpNaissance.Value.Date;
+                    //    con.Open();
+                    //    cmd.ExecuteNonQuery();
+                    //    con.Close();
+                    //}
+                        var nId = new G_t_interimeur(SChonn).Ajouter(tbNom.Text, tbPrenom.Text,
+                            Convert.ToString(cbMetier.SelectedItem), Convert.ToDouble(tbBonus.Text),dtpNaissance.Value);
+                    DtInterimeur.Rows.Add(nId, tbNom, tbPrenom, cbMetier.SelectedItem, tbBonus,dtpNaissance.Value);
+                    //C_t_entreprise entreprise = Entreprises.Find(x => x.nom_entre == cbEntreprise.Text);
                     //chaque fois qu on va creer un interimaire une factures va se creer
-                    var nId_fact = new G_t_facture(SChonn).Ajouter(DateTime.Today, nId, entreprise.id_entre);
+                    //var nId_fact = new G_t_facture(SChonn).Ajouter(DateTime.Today, nId, entreprise.id_entre);
                 }
             }
             else  // modification
             {
                 var nId = int.Parse(tbId.Text);
-                new G_t_interimeur(SChonn).Modifier(nId, tbNom.Text, tbPrenom.Text,Convert.ToString(cbMetier.SelectedItem), Convert.ToDouble(tbBonus.Text));
+                new G_t_interimeur(SChonn).Modifier(nId, tbNom.Text, tbPrenom.Text,Convert.ToString(cbMetier.SelectedItem), Convert.ToDouble(tbBonus.Text),dtpNaissance.Value);
                 dgvInterimeur.SelectedRows[0].Cells["NomInte"].Value = tbNom.Text;
                 dgvInterimeur.SelectedRows[0].Cells["PrenomInte"].Value = tbPrenom.Text;
                 dgvInterimeur.SelectedRows[0].Cells["IdSpec"].Value = cbMetier.SelectedItem;
                 dgvInterimeur.SelectedRows[0].Cells["BonusSal"].Value = tbBonus.Text;
+                dgvInterimeur.SelectedRows[0].Cells["date_naissance"].Value = dtpNaissance.Value;
                 BsInterimeur.EndEdit();
                 Activer(true);
             }
@@ -141,8 +156,8 @@ namespace InterimDesktopApp
             Categories = new G_t_categorie(SChonn).Lire("IdCateg");//lire les donnees et les metre dans une list
             foreach (C_t_categorie categorie in Categories)
                 cbMetier.Items.Add(categorie.nom_categ);
-            foreach (var entreprise in Entreprises)
-                cbEntreprise.Items.Add(entreprise.nom_entre);
+            //foreach (var entreprise in Entreprises)
+            //    cbEntreprise.Items.Add(entreprise.nom_entre);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

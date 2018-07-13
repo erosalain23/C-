@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
-using InterimCouClasses;
-using InterimCouGestions;
+using InterimCouClasse;
+using InterimCouGestion;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 

@@ -1,10 +1,11 @@
 #region Ressources extérieures
-
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using InterimCouClasses;
-
+using System.Data.SqlTypes;
+using InterimCouClasse;
 #endregion
 
 namespace InterimCouAccess
@@ -19,7 +20,7 @@ namespace InterimCouAccess
   	: base(sChaineConnexion)
   { }
   #endregion
-  public int Ajouter(string nom_inte, string prenom_inte, string specialisation, double bonus_sal)
+  public int Ajouter(string nom_inte, string prenom_inte, string specialisation, double bonus_sal,DateTime date_naissance)
   {
    CreerCommande("Ajoutert_interimeur");
    int res = 0;
@@ -29,13 +30,14 @@ namespace InterimCouAccess
    Commande.Parameters.AddWithValue("@prenom_inte", prenom_inte);
    Commande.Parameters.AddWithValue("@specialisation", specialisation);
    Commande.Parameters.AddWithValue("@bonus_sal", bonus_sal);
+            Commande.Parameters.AddWithValue("@date_naissance", date_naissance);
    Commande.Connection.Open();
    Commande.ExecuteNonQuery();
    res = int.Parse(LireParametre("id_inte"));
    Commande.Connection.Close();
    return res;
   }
-  public int Modifier(int id_inte, string nom_inte, string prenom_inte, string specialisation, double bonus_sal)
+  public int Modifier(int id_inte, string nom_inte, string prenom_inte, string specialisation, double bonus_sal, DateTime date_naissance)
   {
    CreerCommande("Modifiert_interimeur");
    int res = 0;
@@ -44,6 +46,7 @@ namespace InterimCouAccess
    Commande.Parameters.AddWithValue("@prenom_inte", prenom_inte);
    Commande.Parameters.AddWithValue("@specialisation", specialisation);
    Commande.Parameters.AddWithValue("@bonus_sal", bonus_sal);
+            Commande.Parameters.AddWithValue("@date_naissance", date_naissance);
    Commande.Connection.Open();
    Commande.ExecuteNonQuery();
    Commande.Connection.Close();
@@ -64,6 +67,7 @@ namespace InterimCouAccess
     tmp.prenom_inte = dr["prenom_inte"].ToString();
     tmp.specialisation = dr["specialisation"].ToString();
     tmp.bonus_sal = double.Parse(dr["bonus_sal"].ToString());
+    tmp.date_naissance = DateTime.Parse(dr["date_naissance"].ToString());
     res.Add(tmp);
 			}
 			dr.Close();
@@ -84,6 +88,7 @@ namespace InterimCouAccess
     res.prenom_inte = dr["prenom_inte"].ToString();
     res.specialisation = dr["specialisation"].ToString();
     res.bonus_sal = double.Parse(dr["bonus_sal"].ToString());
+    res.date_naissance = DateTime.Parse(dr["date_naissance"].ToString());
    }
 			dr.Close();
 			Commande.Connection.Close();

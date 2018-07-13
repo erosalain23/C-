@@ -49,15 +49,15 @@
   <ItemGroup>
     <Reference Include="InterimCouAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\InterimCouAccess.dll</HintPath>
+      <HintPath>..\InterimCouGestion\bin\Debug\InterimCouAccess.dll</HintPath>
     </Reference>
-    <Reference Include="InterimCouClasses, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="InterimCouClasse, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\InterimCouClasses.dll</HintPath>
+      <HintPath>..\InterimCouGestion\bin\Debug\InterimCouClasse.dll</HintPath>
     </Reference>
-    <Reference Include="InterimCouGestions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="InterimCouGestion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\InterimCouGestions.dll</HintPath>
+      <HintPath>..\InterimCouGestion\bin\Debug\InterimCouGestion.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
@@ -118,6 +118,9 @@
     <Compile Include="frmGPrestation.Designer.cs">
       <DependentUpon>frmGPrestation.cs</DependentUpon>
     </Compile>
+    <Compile Include="InterimDBDataSet.cs">
+      <DependentUpon>InterimDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="InterimDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -128,11 +131,6 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NewInterimDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NewInterimDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -174,17 +172,6 @@
     <None Include="InterimDBDataSet.xss">
       <DependentUpon>InterimDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="NewInterimDBDataSet.xsc">
-      <DependentUpon>NewInterimDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="NewInterimDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>NewInterimDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NewInterimDBDataSet.xss">
-      <DependentUpon>NewInterimDBDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -201,13 +188,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
-    <Content Include="NewInterimDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="NewInterimDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>NewInterimDB.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

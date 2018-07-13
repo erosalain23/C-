@@ -5,8 +5,8 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using InterimCouAccess;
-using InterimCouClasses;
-using InterimCouGestions;
+using InterimCouClasse;
+using InterimCouGestion;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 namespace InterimDesktopApp
