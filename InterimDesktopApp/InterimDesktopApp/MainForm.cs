@@ -10,6 +10,7 @@ namespace InterimDesktopApp
 {
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
+        #region Variables
         //variable declaration
         public List<C_t_categorie> Travails { get; set; }
         public List<C_t_interimeur> Interimaires { get; set; }
@@ -30,6 +31,7 @@ namespace InterimDesktopApp
         //Connection string declaration
         private const string SChonn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\NewInterimDB\NewInterimDB.mdf;Integrated Security=True;Connect Timeout=30";
         //constructor
+        #endregion
         public MainForm()
         {
             InitializeComponent();
@@ -48,6 +50,7 @@ namespace InterimDesktopApp
             RemplirDgvPrestations();
             SelectFirstRow(dgvInterimeur, dgvEntreprise, dgvTravails, dgvFacture,dgvTravails);
         }
+        #region Filling data grid views
         private void RemplirDgvInterimeur()
         {
             DtInterimeur = new DataTable();
@@ -93,6 +96,7 @@ namespace InterimDesktopApp
         }
         private void RemplirDgvPrestations()
         {
+            int joursRestants;
             DtPrestations = new DataTable();
             DtPrestations.Columns.Add(new DataColumn("IdPresta",Type.GetType("System.Int32")?? throw new InvalidOperationException()));
             DtPrestations.Columns.Add("Interimaire");
@@ -110,12 +114,15 @@ namespace InterimDesktopApp
                 C_t_categorie travail = Travails.Find(x => x.id_categ == prestation.id_categ);
                 C_t_interimeur interimaire = Interimaires.Find(x => x.id_inte == facture.id_inte);
                 C_t_entreprise entreprise = Entreprises.Find(x => x.id_entre == facture.id_entre);
-                MessageBox.Show(entreprise.nom_entre);
-                DtPrestations.Rows.Add(prestation.Id_travail,interimaire.nom_inte, entreprise.nom_entre, travail.nom_categ, prestation.date_debut.ToString("dd-MM-yyyy"), prestation.date_fin.ToString("dd-MM-yyyy"), (DateTime.Today - prestation.date_fin).TotalDays, facture.date_fact, (prestation.date_fin < DateTime.Today) ? "En Cours" : "Terminer");
+                //MessageBox.Show(entreprise.nom_entre);
+                joursRestants = Convert.ToInt32((prestation.date_fin - DateTime.Today).TotalDays);
+                if (joursRestants < 0) joursRestants = 0;
+                DtPrestations.Rows.Add(prestation.Id_travail,interimaire.nom_inte, entreprise.nom_entre, travail.nom_categ, prestation.date_debut.ToString("dd-MM-yyyy"), prestation.date_fin.ToString("dd-MM-yyyy"), joursRestants , facture.date_fact, (prestation.date_fin > DateTime.Today) ? "En Cours" : "Terminer");
             }
             BsPrestations = new BindingSource { DataSource = DtPrestations };
             dgvPrestations.DataSource = BsPrestations;
         }
+        #endregion
         private static void SelectFirstRow( DataGridView dgvInterimeur,DataGridView dgvClient,DataGridView dgvTravails, DataGridView dgvFacture,DataGridView dgvPrestations)
         {
 
@@ -130,7 +137,7 @@ namespace InterimDesktopApp
             else if (dgvPrestations.RowCount > 0)
                 dgvPrestations.Rows[0].Selected = true;
         }
-
+        #region Navigation menu buttons
         private void btnGInte_Click(object sender, EventArgs e)
         {
             using (var frm = new btnEmpDuTemps())
@@ -161,31 +168,94 @@ namespace InterimDesktopApp
                 frm.ShowDialog();
             }
         }
+        private void btnGeTravail_Click(object sender, EventArgs e)
+        {
+            using (FrmGCategorie f = new FrmGCategorie())
+            {
+                f.ShowDialog();
+            }
+        }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            RemplirDgvPrestations();
             RemplirDgvEntreprise();
             RemplirDgvFacture();
             RemplirDgvInterimeur();
             RemplirDgvTravail();
-            RemplirDgvPrestations();
         }
-
+        #endregion
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
-            string nomPresta= tbNomPresta.Text;
-            if (string.IsNullOrEmpty(tbPrix.Text))
+            var interimaire = dgvInterimeur.SelectedRows[0].Cells["NomInte"].Value;
+            var travail = dgvTravails.SelectedRows[0].Cells["NomTravail"].Value;
+            string nomPresta = tbNomPresta.Text;
+            //MessageBox.Show(interimaire.ToString() + " " + travail.ToString());
+            //MessageBox.Show(dgvTravails.SelectedRows[0].Cells["IdCat"].Value.ToString());
+            if (dgvPrestations.RowCount > 0)//checking redundancy for security puporse; if the user exists and he works in the same position  
+            {
+                foreach (DataGridViewRow row in dgvPrestations.Rows)
+                {
+                    if (row.Cells["Interimaire"].Value == interimaire && row.Cells["Travail"].Value == travail)
+                    {
+                        //MessageBox.Show(row.Cells["Status"].Value.ToString());
+                        if (row.Cells["Status"].Value.ToString() == "En Cours")
+                        {
+                            MessageBox.Show("Cannot proceed because interimaire " + interimaire + " is not free now");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("We cannot proceed because Interimaire " + interimaire + " is working in that position");
+                            return;
+                        }
+                    }
+                    else continue;
+                }
+            }
+            if (string.IsNullOrEmpty(tbPrix.Text))//checking if the user enters the price
             {
                 MessageBox.Show("Please Enter the Salary per day");
                 return;
             }
-            else if (string.IsNullOrEmpty(nomPresta)) nomPresta = " "; //making nom de prestation a blank text 
-            else
-            {
-                new G_t_travail(SChonn).Ajouter(nomPresta, double.Parse(tbPrix.Text), dtpDebut.Value, dtpFin.Value, (int)dgvTravails.SelectedRows[0].Cells["IdPresta"].Value, (int)dgvFacture.SelectedRows[0].Cells["IdFact"].Value);
-                MessageBox.Show("Registation successful");
-            }
-
+            if (string.IsNullOrEmpty(nomPresta)) nomPresta = " "; //making nom de prestation a blank text 
+          
+            new G_t_travail(SChonn).Ajouter(nomPresta, double.Parse(tbPrix.Text), dtpDebut.Value, dtpFin.Value, (int)dgvTravails.SelectedRows[0].Cells["IdCat"].Value, (int)dgvFacture.SelectedRows[0].Cells["IdFact"].Value);
+            RemplirDgvPrestations();
+            MessageBox.Show("Registation successful");
         }
+
+        private void BtnSupprimer_Click(object sender, EventArgs e)
+        {
+            var interimaire = dgvPrestations.SelectedRows[0].Cells["Interimaire"].Value;
+            var nId= (int)dgvPrestations.SelectedRows[0].Cells["IdPresta"].Value;
+            if (dgvPrestations.RowCount > 0)
+            {
+                if (dgvPrestations.SelectedRows[0].Cells["Status"].Value.ToString() == "En Cours")
+                {
+                    MessageBox.Show("Cannot delete the prestation because " + interimaire.ToString() + " is still working");
+                    return;
+                }
+                else
+                {
+                    if (nId <= 0)
+                    {
+                        MessageBox.Show("the Id is incorrect! please select a valid row");
+                        return;
+                    }
+                    else
+                    {
+                        new G_t_travail(SChonn).Supprimer(nId);
+                        RemplirDgvPrestations();
+                        MessageBox.Show("Deletion successful!");
+
+                    }
+                }
+
+            }
+           
+        }
+
+  
     }
 }

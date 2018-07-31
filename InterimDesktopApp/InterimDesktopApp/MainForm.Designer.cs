@@ -35,21 +35,32 @@
             this.btnGeEntre = new MetroFramework.Controls.MetroTile();
             this.btnGeFact = new MetroFramework.Controls.MetroTile();
             this.dgvInterimeur = new System.Windows.Forms.DataGridView();
+            this.IdInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrenomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEntreprise = new System.Windows.Forms.DataGridView();
+            this.IdEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTravails = new System.Windows.Forms.DataGridView();
+            this.IdCat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomTravail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFacture = new System.Windows.Forms.DataGridView();
+            this.IdFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPrestations = new System.Windows.Forms.DataGridView();
+            this.IdPresta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Interimaire = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Entreprise = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Travail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DtDebut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DtFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Facture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.IdFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomEntre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrenomInte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnConfirmer = new MetroFramework.Controls.MetroButton();
             this.BtnSupprimer = new MetroFramework.Controls.MetroButton();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
@@ -60,17 +71,8 @@
             this.tbPrix = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.tbNomPresta = new MetroFramework.Controls.MetroTextBox();
-            this.IdTravail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomTravail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdPresta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Interimaire = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Entreprise = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Travail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DtDebut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DtFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Jours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Facture = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGeTravail = new MetroFramework.Controls.MetroTile();
+            this.btnGePrints = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInterimeur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntreprise)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTravails)).BeginInit();
@@ -132,11 +134,11 @@
             // 
             // btnGeFact
             // 
-            this.btnGeFact.Location = new System.Drawing.Point(442, 74);
+            this.btnGeFact.Location = new System.Drawing.Point(546, 74);
             this.btnGeFact.Name = "btnGeFact";
             this.btnGeFact.Size = new System.Drawing.Size(98, 77);
             this.btnGeFact.TabIndex = 0;
-            this.btnGeFact.Text = "Print";
+            this.btnGeFact.Text = "Add Facture";
             this.btnGeFact.TileImage = ((System.Drawing.Image)(resources.GetObject("btnGeFact.TileImage")));
             this.btnGeFact.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGeFact.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
@@ -157,6 +159,27 @@
             this.dgvInterimeur.Size = new System.Drawing.Size(364, 154);
             this.dgvInterimeur.TabIndex = 1;
             // 
+            // IdInte
+            // 
+            this.IdInte.DataPropertyName = "IdInte";
+            this.IdInte.HeaderText = "ID";
+            this.IdInte.Name = "IdInte";
+            this.IdInte.Width = 80;
+            // 
+            // NomInte
+            // 
+            this.NomInte.DataPropertyName = "NomInte";
+            this.NomInte.HeaderText = "NOM";
+            this.NomInte.Name = "NomInte";
+            this.NomInte.Width = 130;
+            // 
+            // PrenomInte
+            // 
+            this.PrenomInte.DataPropertyName = "PrenomInte";
+            this.PrenomInte.HeaderText = "PRENOM";
+            this.PrenomInte.Name = "PrenomInte";
+            this.PrenomInte.Width = 180;
+            // 
             // dgvEntreprise
             // 
             this.dgvEntreprise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -170,11 +193,25 @@
             this.dgvEntreprise.Size = new System.Drawing.Size(290, 154);
             this.dgvEntreprise.TabIndex = 1;
             // 
+            // IdEntre
+            // 
+            this.IdEntre.DataPropertyName = "IdEntre";
+            this.IdEntre.HeaderText = "ID";
+            this.IdEntre.Name = "IdEntre";
+            this.IdEntre.Width = 80;
+            // 
+            // NomEntre
+            // 
+            this.NomEntre.DataPropertyName = "NomEntre";
+            this.NomEntre.HeaderText = "NOM";
+            this.NomEntre.Name = "NomEntre";
+            this.NomEntre.Width = 220;
+            // 
             // dgvTravails
             // 
             this.dgvTravails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTravails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdTravail,
+            this.IdCat,
             this.NomTravail});
             this.dgvTravails.Location = new System.Drawing.Point(23, 462);
             this.dgvTravails.Name = "dgvTravails";
@@ -182,6 +219,20 @@
             this.dgvTravails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTravails.Size = new System.Drawing.Size(287, 154);
             this.dgvTravails.TabIndex = 1;
+            // 
+            // IdCat
+            // 
+            this.IdCat.DataPropertyName = "IdCat";
+            this.IdCat.HeaderText = "ID";
+            this.IdCat.Name = "IdCat";
+            this.IdCat.Width = 60;
+            // 
+            // NomTravail
+            // 
+            this.NomTravail.DataPropertyName = "NomTravail";
+            this.NomTravail.HeaderText = "NOM";
+            this.NomTravail.Name = "NomTravail";
+            this.NomTravail.Width = 243;
             // 
             // dgvFacture
             // 
@@ -195,6 +246,20 @@
             this.dgvFacture.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacture.Size = new System.Drawing.Size(284, 154);
             this.dgvFacture.TabIndex = 1;
+            // 
+            // IdFact
+            // 
+            this.IdFact.DataPropertyName = "IdFact";
+            this.IdFact.HeaderText = "ID";
+            this.IdFact.Name = "IdFact";
+            this.IdFact.Width = 80;
+            // 
+            // DateFact
+            // 
+            this.DateFact.DataPropertyName = "dateFact";
+            this.DateFact.HeaderText = "DATE";
+            this.DateFact.Name = "DateFact";
+            this.DateFact.Width = 200;
             // 
             // dgvPrestations
             // 
@@ -211,8 +276,72 @@
             this.Status});
             this.dgvPrestations.Location = new System.Drawing.Point(23, 184);
             this.dgvPrestations.Name = "dgvPrestations";
+            this.dgvPrestations.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvPrestations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrestations.Size = new System.Drawing.Size(1318, 195);
             this.dgvPrestations.TabIndex = 2;
+            // 
+            // IdPresta
+            // 
+            this.IdPresta.DataPropertyName = "IdPresta";
+            this.IdPresta.HeaderText = "ID";
+            this.IdPresta.Name = "IdPresta";
+            // 
+            // Interimaire
+            // 
+            this.Interimaire.DataPropertyName = "Interimaire";
+            this.Interimaire.HeaderText = "Interimaire";
+            this.Interimaire.Name = "Interimaire";
+            this.Interimaire.Width = 146;
+            // 
+            // Entreprise
+            // 
+            this.Entreprise.DataPropertyName = "Entreprise";
+            this.Entreprise.HeaderText = "Entreprise";
+            this.Entreprise.Name = "Entreprise";
+            this.Entreprise.Width = 146;
+            // 
+            // Travail
+            // 
+            this.Travail.DataPropertyName = "Travail";
+            this.Travail.HeaderText = "Travail";
+            this.Travail.Name = "Travail";
+            this.Travail.Width = 146;
+            // 
+            // DtDebut
+            // 
+            this.DtDebut.DataPropertyName = "DateDebut";
+            this.DtDebut.HeaderText = "Date Debut";
+            this.DtDebut.Name = "DtDebut";
+            this.DtDebut.Width = 146;
+            // 
+            // DtFin
+            // 
+            this.DtFin.DataPropertyName = "DateFin";
+            this.DtFin.HeaderText = "Date Fin";
+            this.DtFin.Name = "DtFin";
+            this.DtFin.Width = 146;
+            // 
+            // Jours
+            // 
+            this.Jours.DataPropertyName = "JourRestant";
+            this.Jours.HeaderText = "Jours restant";
+            this.Jours.Name = "Jours";
+            this.Jours.Width = 146;
+            // 
+            // Facture
+            // 
+            this.Facture.DataPropertyName = "Facture";
+            this.Facture.HeaderText = "Facture";
+            this.Facture.Name = "Facture";
+            this.Facture.Width = 146;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.Width = 146;
             // 
             // metroLabel1
             // 
@@ -250,55 +379,6 @@
             this.metroLabel4.TabIndex = 6;
             this.metroLabel4.Text = "Interimaires";
             // 
-            // IdFact
-            // 
-            this.IdFact.DataPropertyName = "IdFact";
-            this.IdFact.HeaderText = "ID";
-            this.IdFact.Name = "IdFact";
-            this.IdFact.Width = 80;
-            // 
-            // DateFact
-            // 
-            this.DateFact.DataPropertyName = "dateFact";
-            this.DateFact.HeaderText = "DATE";
-            this.DateFact.Name = "DateFact";
-            this.DateFact.Width = 200;
-            // 
-            // IdEntre
-            // 
-            this.IdEntre.DataPropertyName = "IdEntre";
-            this.IdEntre.HeaderText = "ID";
-            this.IdEntre.Name = "IdEntre";
-            this.IdEntre.Width = 80;
-            // 
-            // NomEntre
-            // 
-            this.NomEntre.DataPropertyName = "NomEntre";
-            this.NomEntre.HeaderText = "NOM";
-            this.NomEntre.Name = "NomEntre";
-            this.NomEntre.Width = 220;
-            // 
-            // IdInte
-            // 
-            this.IdInte.DataPropertyName = "IdInte";
-            this.IdInte.HeaderText = "ID";
-            this.IdInte.Name = "IdInte";
-            this.IdInte.Width = 80;
-            // 
-            // NomInte
-            // 
-            this.NomInte.DataPropertyName = "NomInte";
-            this.NomInte.HeaderText = "NOM";
-            this.NomInte.Name = "NomInte";
-            this.NomInte.Width = 130;
-            // 
-            // PrenomInte
-            // 
-            this.PrenomInte.DataPropertyName = "PrenomInte";
-            this.PrenomInte.HeaderText = "PRENOM";
-            this.PrenomInte.Name = "PrenomInte";
-            this.PrenomInte.Width = 180;
-            // 
             // btnConfirmer
             // 
             this.btnConfirmer.Location = new System.Drawing.Point(977, 650);
@@ -315,6 +395,7 @@
             this.BtnSupprimer.Size = new System.Drawing.Size(179, 41);
             this.BtnSupprimer.TabIndex = 7;
             this.BtnSupprimer.Text = "Supprimer";
+            this.BtnSupprimer.Click += new System.EventHandler(this.BtnSupprimer_Click);
             // 
             // dtpDebut
             // 
@@ -382,81 +463,28 @@
             this.tbNomPresta.Size = new System.Drawing.Size(290, 23);
             this.tbNomPresta.TabIndex = 12;
             // 
-            // IdTravail
+            // btnGeTravail
             // 
-            this.IdTravail.DataPropertyName = "IdCat";
-            this.IdTravail.HeaderText = "ID";
-            this.IdTravail.Name = "IdTravail";
-            this.IdTravail.Width = 60;
+            this.btnGeTravail.Location = new System.Drawing.Point(442, 74);
+            this.btnGeTravail.Name = "btnGeTravail";
+            this.btnGeTravail.Size = new System.Drawing.Size(98, 77);
+            this.btnGeTravail.TabIndex = 0;
+            this.btnGeTravail.Text = "Add Travail";
+            this.btnGeTravail.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGeTravail.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnGeTravail.UseTileImage = true;
+            this.btnGeTravail.Click += new System.EventHandler(this.btnGeTravail_Click);
             // 
-            // NomTravail
+            // btnGePrints
             // 
-            this.NomTravail.DataPropertyName = "NomTravail";
-            this.NomTravail.HeaderText = "NOM";
-            this.NomTravail.Name = "NomTravail";
-            this.NomTravail.Width = 243;
-            // 
-            // IdPresta
-            // 
-            this.IdPresta.DataPropertyName = "IdPresta";
-            this.IdPresta.HeaderText = "ID";
-            this.IdPresta.Name = "IdPresta";
-            // 
-            // Interimaire
-            // 
-            this.Interimaire.DataPropertyName = "Interimaire";
-            this.Interimaire.HeaderText = "Interimaire";
-            this.Interimaire.Name = "Interimaire";
-            this.Interimaire.Width = 146;
-            // 
-            // Entreprise
-            // 
-            this.Entreprise.DataPropertyName = "Entreprise";
-            this.Entreprise.HeaderText = "Entreprise";
-            this.Entreprise.Name = "Entreprise";
-            this.Entreprise.Width = 146;
-            // 
-            // Travail
-            // 
-            this.Travail.DataPropertyName = "Travail";
-            this.Travail.HeaderText = "Travail";
-            this.Travail.Name = "Travail";
-            this.Travail.Width = 146;
-            // 
-            // DtDebut
-            // 
-            this.DtDebut.DataPropertyName = "DateDebut";
-            this.DtDebut.HeaderText = "Date Debut";
-            this.DtDebut.Name = "DtDebut";
-            this.DtDebut.Width = 146;
-            // 
-            // DtFin
-            // 
-            this.DtFin.DataPropertyName = "DateFin";
-            this.DtFin.HeaderText = "Date Fin";
-            this.DtFin.Name = "DtFin";
-            this.DtFin.Width = 146;
-            // 
-            // Jours
-            // 
-            this.Jours.DataPropertyName = "JourRestant";
-            this.Jours.HeaderText = "Jours restant";
-            this.Jours.Name = "Jours";
-            this.Jours.Width = 146;
-            // 
-            // Facture
-            // 
-            this.Facture.DataPropertyName = "Facture";
-            this.Facture.HeaderText = "Facture";
-            this.Facture.Name = "Facture";
-            this.Facture.Width = 146;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.Width = 146;
+            this.btnGePrints.Location = new System.Drawing.Point(650, 74);
+            this.btnGePrints.Name = "btnGePrints";
+            this.btnGePrints.Size = new System.Drawing.Size(98, 77);
+            this.btnGePrints.TabIndex = 0;
+            this.btnGePrints.Text = "Print";
+            this.btnGePrints.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGePrints.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnGePrints.UseTileImage = true;
             // 
             // MainForm
             // 
@@ -484,6 +512,8 @@
             this.Controls.Add(this.dgvInterimeur);
             this.Controls.Add(this.btnGInte);
             this.Controls.Add(this.btnGeEntre);
+            this.Controls.Add(this.btnGePrints);
+            this.Controls.Add(this.btnGeTravail);
             this.Controls.Add(this.btnGeFact);
             this.Controls.Add(this.btnGePresta);
             this.Controls.Add(this.btnRefresh);
@@ -533,8 +563,6 @@
         private MetroFramework.Controls.MetroTextBox tbPrix;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroTextBox tbNomPresta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdTravail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomTravail;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPresta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Interimaire;
         private System.Windows.Forms.DataGridViewTextBoxColumn Entreprise;
@@ -544,5 +572,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Jours;
         private System.Windows.Forms.DataGridViewTextBoxColumn Facture;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomTravail;
+        private MetroFramework.Controls.MetroTile btnGeTravail;
+        private MetroFramework.Controls.MetroTile btnGePrints;
     }
 }
